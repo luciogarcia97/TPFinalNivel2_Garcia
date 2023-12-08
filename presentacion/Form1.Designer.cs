@@ -47,14 +47,15 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(12, 27);
             this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(762, 263);
+            this.dgvArticulos.Size = new System.Drawing.Size(743, 263);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbxImagenCatalogo
             // 
-            this.pbxImagenCatalogo.Location = new System.Drawing.Point(780, 27);
+            this.pbxImagenCatalogo.Location = new System.Drawing.Point(761, 27);
             this.pbxImagenCatalogo.Name = "pbxImagenCatalogo";
-            this.pbxImagenCatalogo.Size = new System.Drawing.Size(246, 263);
+            this.pbxImagenCatalogo.Size = new System.Drawing.Size(265, 411);
             this.pbxImagenCatalogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagenCatalogo.TabIndex = 1;
             this.pbxImagenCatalogo.TabStop = false;
@@ -82,13 +83,13 @@
             // tsmAgregarArticulo
             // 
             this.tsmAgregarArticulo.Name = "tsmAgregarArticulo";
-            this.tsmAgregarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmAgregarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmAgregarArticulo.Text = "Agregar";
             // 
             // tsmModificarArticulo
             // 
             this.tsmModificarArticulo.Name = "tsmModificarArticulo";
-            this.tsmModificarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmModificarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmModificarArticulo.Text = "Modificar";
             // 
             // tsmEliminarArticulo
@@ -97,25 +98,26 @@
             this.tsmEliminarFisico,
             this.tsmEliminarLogico});
             this.tsmEliminarArticulo.Name = "tsmEliminarArticulo";
-            this.tsmEliminarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmEliminarArticulo.Text = "Eliminar";
             // 
             // tsmEliminarFisico
             // 
             this.tsmEliminarFisico.Name = "tsmEliminarFisico";
-            this.tsmEliminarFisico.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarFisico.Size = new System.Drawing.Size(110, 22);
             this.tsmEliminarFisico.Text = "Fisico";
             // 
             // tsmEliminarLogico
             // 
             this.tsmEliminarLogico.Name = "tsmEliminarLogico";
-            this.tsmEliminarLogico.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarLogico.Size = new System.Drawing.Size(110, 22);
             this.tsmEliminarLogico.Text = "Logico";
             // 
             // frmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1038, 493);
             this.Controls.Add(this.pbxImagenCatalogo);
             this.Controls.Add(this.dgvArticulos);

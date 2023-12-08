@@ -22,6 +22,7 @@ namespace presentacion
 
         private void frmCatalogo_Load(object sender, EventArgs e)
         {
+            //Cargamos la tabla al momento de ejecutar
             cargar();
 
         }
@@ -32,12 +33,48 @@ namespace presentacion
             {
                 listaArticulos = service.listArticulos();
                 dgvArticulos.DataSource = listaArticulos;
+                //Agregado de imagenes
+                ocultarColumnas(); //Oculto la columna UrlImagen
+                cargarImagen(listaArticulos[0].UrlImagen);
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(imagen)) //Corroboro que no sea null para que no rompa.
+                    pbxImagenCatalogo.Load(imagen);
+                else
+                    placerHolder();
+
+            }
+            catch (Exception)
+            {
+                placerHolder();
+            }
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo selectedArticle = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                cargarImagen(selectedArticle.UrlImagen);
+            }
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["UrlImagen"].Visible = false;
+        }
+        private void placerHolder()
+        {
+            pbxImagenCatalogo.Load("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png");
         }
     }
 }

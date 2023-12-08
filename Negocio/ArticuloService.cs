@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setQuery("select a.Id Id, a.Codigo Codigo, a.Nombre Nombre, a.Descripcion Descripcion, c.Descripcion Categoria, m.Descripcion Marca, a.Precio Precio, c.id idCategoria, m.Id idMarcas from ARTICULOS a left join CATEGORIAS c on c.Id = a.IdCategoria left join MARCAS m on m.Id = a.IdMarca");
+                datos.setQuery("select a.Id Id, a.Codigo Codigo, a.Nombre Nombre, a.Descripcion Descripcion, c.Descripcion Categoria, m.Descripcion Marca, a.Precio Precio, c.id idCategoria, m.Id idMarcas, a.ImagenUrl UrlImagen from ARTICULOS a left join CATEGORIAS c on c.Id = a.IdCategoria left join MARCAS m on m.Id = a.IdMarca");
                 datos.execute();
 
                 while (datos.Lector.Read())
@@ -34,6 +34,7 @@ namespace Negocio
                     unit.Marca = new Marca();
                     unit.Marca.Id = (int)datos.Lector["idMarcas"];
                     unit.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    unit.UrlImagen = (string)datos.Lector["UrlImagen"];
                     unit.Precio = (decimal)datos.Lector["Precio"];
 
                     lista.Add(unit);
