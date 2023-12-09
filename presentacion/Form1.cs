@@ -24,6 +24,8 @@ namespace presentacion
         {
             //Cargamos la tabla al momento de ejecutar
             cargar();
+            //Al apretar Ctrl + F quiero habilitar el menu del buscador
+            tsmBuscar.ShortcutKeys = Keys.Control | Keys.F;
 
         }
         private void cargar()
@@ -71,10 +73,17 @@ namespace presentacion
         private void ocultarColumnas()
         {
             dgvArticulos.Columns["UrlImagen"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
         }
         private void placerHolder()
         {
             pbxImagenCatalogo.Load("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png");
+        }
+
+        private void tsmBuscar_Click(object sender, EventArgs e)
+        {
+            frmVentanaDeBusqueda buscar = new frmVentanaDeBusqueda();
+            buscar.ShowDialog();
         }
     }
 }

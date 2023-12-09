@@ -37,6 +37,7 @@
             this.tsmEliminarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarFisico = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarLogico = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmBuscar = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenCatalogo)).BeginInit();
             this.mnsBarradeAcciones.SuspendLayout();
@@ -47,7 +48,7 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(12, 27);
             this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(743, 263);
+            this.dgvArticulos.Size = new System.Drawing.Size(743, 411);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
@@ -75,7 +76,8 @@
             this.tsmArticulosWork.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmAgregarArticulo,
             this.tsmModificarArticulo,
-            this.tsmEliminarArticulo});
+            this.tsmEliminarArticulo,
+            this.tsmBuscar});
             this.tsmArticulosWork.Name = "tsmArticulosWork";
             this.tsmArticulosWork.Size = new System.Drawing.Size(66, 20);
             this.tsmArticulosWork.Text = "Articulos";
@@ -104,14 +106,21 @@
             // tsmEliminarFisico
             // 
             this.tsmEliminarFisico.Name = "tsmEliminarFisico";
-            this.tsmEliminarFisico.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarFisico.Size = new System.Drawing.Size(110, 22);
             this.tsmEliminarFisico.Text = "Fisico";
             // 
             // tsmEliminarLogico
             // 
             this.tsmEliminarLogico.Name = "tsmEliminarLogico";
-            this.tsmEliminarLogico.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarLogico.Size = new System.Drawing.Size(110, 22);
             this.tsmEliminarLogico.Text = "Logico";
+            // 
+            // tsmBuscar
+            // 
+            this.tsmBuscar.Name = "tsmBuscar";
+            this.tsmBuscar.Size = new System.Drawing.Size(180, 22);
+            this.tsmBuscar.Text = "Buscar";
+            this.tsmBuscar.Click += new System.EventHandler(this.tsmBuscar_Click);
             // 
             // frmCatalogo
             // 
@@ -147,6 +156,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarFisico;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarLogico;
+        private System.Windows.Forms.ToolStripMenuItem tsmBuscar;
     }
 }
 
