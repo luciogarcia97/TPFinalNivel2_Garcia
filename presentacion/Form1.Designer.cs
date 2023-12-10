@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCatalogo));
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pbxImagenCatalogo = new System.Windows.Forms.PictureBox();
             this.mnsBarradeAcciones = new System.Windows.Forms.MenuStrip();
@@ -37,7 +38,9 @@
             this.tsmEliminarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarFisico = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarLogico = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmBuscar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmBuscarPorFiltros = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBuscarGeneral = new System.Windows.Forms.Button();
+            this.tbxBuscador = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenCatalogo)).BeginInit();
             this.mnsBarradeAcciones.SuspendLayout();
@@ -46,7 +49,7 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 27);
+            this.dgvArticulos.Location = new System.Drawing.Point(12, 70);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.Size = new System.Drawing.Size(743, 411);
             this.dgvArticulos.TabIndex = 0;
@@ -54,7 +57,7 @@
             // 
             // pbxImagenCatalogo
             // 
-            this.pbxImagenCatalogo.Location = new System.Drawing.Point(761, 27);
+            this.pbxImagenCatalogo.Location = new System.Drawing.Point(761, 70);
             this.pbxImagenCatalogo.Name = "pbxImagenCatalogo";
             this.pbxImagenCatalogo.Size = new System.Drawing.Size(265, 411);
             this.pbxImagenCatalogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -77,7 +80,7 @@
             this.tsmAgregarArticulo,
             this.tsmModificarArticulo,
             this.tsmEliminarArticulo,
-            this.tsmBuscar});
+            this.tsmBuscarPorFiltros});
             this.tsmArticulosWork.Name = "tsmArticulosWork";
             this.tsmArticulosWork.Size = new System.Drawing.Size(66, 20);
             this.tsmArticulosWork.Text = "Articulos";
@@ -106,21 +109,42 @@
             // tsmEliminarFisico
             // 
             this.tsmEliminarFisico.Name = "tsmEliminarFisico";
-            this.tsmEliminarFisico.Size = new System.Drawing.Size(110, 22);
+            this.tsmEliminarFisico.Size = new System.Drawing.Size(180, 22);
             this.tsmEliminarFisico.Text = "Fisico";
             // 
             // tsmEliminarLogico
             // 
             this.tsmEliminarLogico.Name = "tsmEliminarLogico";
-            this.tsmEliminarLogico.Size = new System.Drawing.Size(110, 22);
+            this.tsmEliminarLogico.Size = new System.Drawing.Size(180, 22);
             this.tsmEliminarLogico.Text = "Logico";
             // 
-            // tsmBuscar
+            // tsmBuscarPorFiltros
             // 
-            this.tsmBuscar.Name = "tsmBuscar";
-            this.tsmBuscar.Size = new System.Drawing.Size(180, 22);
-            this.tsmBuscar.Text = "Buscar";
-            this.tsmBuscar.Click += new System.EventHandler(this.tsmBuscar_Click);
+            this.tsmBuscarPorFiltros.Name = "tsmBuscarPorFiltros";
+            this.tsmBuscarPorFiltros.Size = new System.Drawing.Size(180, 22);
+            this.tsmBuscarPorFiltros.Text = "Buscar por filtros";
+            this.tsmBuscarPorFiltros.Click += new System.EventHandler(this.tsmBuscar_Click);
+            // 
+            // btnBuscarGeneral
+            // 
+            this.btnBuscarGeneral.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarGeneral.Image")));
+            this.btnBuscarGeneral.Location = new System.Drawing.Point(193, 44);
+            this.btnBuscarGeneral.Name = "btnBuscarGeneral";
+            this.btnBuscarGeneral.Size = new System.Drawing.Size(19, 20);
+            this.btnBuscarGeneral.TabIndex = 5;
+            this.btnBuscarGeneral.UseVisualStyleBackColor = true;
+            this.btnBuscarGeneral.Click += new System.EventHandler(this.btnBuscarGeneral_Click);
+            // 
+            // tbxBuscador
+            // 
+            this.tbxBuscador.BackColor = System.Drawing.Color.White;
+            this.tbxBuscador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxBuscador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxBuscador.Location = new System.Drawing.Point(12, 44);
+            this.tbxBuscador.Name = "tbxBuscador";
+            this.tbxBuscador.Size = new System.Drawing.Size(175, 20);
+            this.tbxBuscador.TabIndex = 4;
+            this.tbxBuscador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxBuscador_KeyPress);
             // 
             // frmCatalogo
             // 
@@ -128,6 +152,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1038, 493);
+            this.Controls.Add(this.btnBuscarGeneral);
+            this.Controls.Add(this.tbxBuscador);
             this.Controls.Add(this.pbxImagenCatalogo);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.mnsBarradeAcciones);
@@ -156,7 +182,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarFisico;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarLogico;
-        private System.Windows.Forms.ToolStripMenuItem tsmBuscar;
+        private System.Windows.Forms.ToolStripMenuItem tsmBuscarPorFiltros;
+        private System.Windows.Forms.Button btnBuscarGeneral;
+        private System.Windows.Forms.TextBox tbxBuscador;
     }
 }
 

@@ -15,6 +15,7 @@ namespace presentacion
     public partial class frmCatalogo : Form
     {
         private List<Articulo> listaArticulos;
+        private string mensajeBusqueda = "Buscador"; // Se genero una variable global para reutilizarla
         public frmCatalogo()
         {
             InitializeComponent();
@@ -24,9 +25,10 @@ namespace presentacion
         {
             //Cargamos la tabla al momento de ejecutar
             cargar();
+            //Frase en el buscador
+            configurarMensajeBuscador();
             //Al apretar Ctrl + F quiero habilitar el menu del buscador
-            tsmBuscar.ShortcutKeys = Keys.Control | Keys.F;
-
+            tsmBuscarPorFiltros.ShortcutKeys = Keys.Control | Keys.F;
         }
         private void cargar()
         {
@@ -41,7 +43,6 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -80,6 +81,68 @@ namespace presentacion
             pbxImagenCatalogo.Load("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png");
         }
 
+        //Busqueda Global en main
+        private void btnBuscarGeneral_Click(object sender, EventArgs e)
+        {
+            busquedaGlobal();
+        }
+        private void tbxBuscador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Si se presiona la tecla Enter, realizar la búsqueda
+                busquedaGlobal();
+                // Evitar que se procese la tecla Enter por defecto
+                e.Handled = true;
+            }
+        }
+        private void busquedaGlobal()
+        {
+            List<Articulo> listaBusqueda;
+            string buscar = tbxBuscador.Text;
+
+            if (buscar != mensajeBusqueda)
+                listaBusqueda = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(buscar.ToUpper())
+                || x.Descripcion.ToUpper().Contains(buscar.ToUpper())
+                || x.Marca.Descripcion.ToUpper().Contains(buscar.ToUpper())
+                || x.Categoria.Descripcion.ToUpper().Contains(buscar.ToUpper())
+                || x.Id.ToString().ToUpper().Contains(buscar.ToUpper())
+                || x.Codigo.ToString().ToUpper().Contains(buscar.ToUpper()));
+            else
+            {
+                listaBusqueda = listaArticulos;
+            }
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaBusqueda;
+            ocultarColumnas();
+        }
+
+        //Visualizacion del buscador
+        private void configurarMensajeBuscador()
+        {
+            tbxBuscador.Text = mensajeBusqueda;
+            //Cuando se entra en el buscador se limpia la busqueda
+            tbxBuscador.GotFocus += (s, e) => limpiarTextoBuscador();
+            //Cuando se sale del buscador se regresa el mensaje
+            tbxBuscador.LostFocus += (s, e) => regresarMensajeBuscador();
+        }
+        private void limpiarTextoBuscador()
+        {
+            if (tbxBuscador.Text == mensajeBusqueda)
+            {
+                tbxBuscador.Text = "";
+            }
+        }
+        private void regresarMensajeBuscador()
+        {
+            if (string.IsNullOrWhiteSpace(tbxBuscador.Text))
+            {
+                tbxBuscador.Text = mensajeBusqueda;
+            }
+        }
+
+        //Busqueda por filtros
         private void tsmBuscar_Click(object sender, EventArgs e)
         {
             frmVentanaDeBusqueda buscar = new frmVentanaDeBusqueda();
