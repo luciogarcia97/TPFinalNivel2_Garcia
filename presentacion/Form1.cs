@@ -54,7 +54,6 @@ namespace presentacion
                     pbxImagenCatalogo.Load(imagen);
                 else
                     placerHolder();
-
             }
             catch (Exception)
             {
