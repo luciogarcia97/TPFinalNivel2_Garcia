@@ -51,6 +51,10 @@ namespace Presentacion.DataAccess
                 lector.Close();
             conexion.Close();
         }
+        public void setParameters(string name, object value)
+        {
+            command.Parameters.AddWithValue(name, value);
+        }
     }
 
 }
