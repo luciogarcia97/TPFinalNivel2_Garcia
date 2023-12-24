@@ -90,6 +90,7 @@
             this.tsmAgregarArticulo.Name = "tsmAgregarArticulo";
             this.tsmAgregarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tsmAgregarArticulo.Text = "Agregar";
+            this.tsmAgregarArticulo.Click += new System.EventHandler(this.tsmAgregarArticulo_Click);
             // 
             // tsmModificarArticulo
             // 
@@ -109,13 +110,13 @@
             // tsmEliminarFisico
             // 
             this.tsmEliminarFisico.Name = "tsmEliminarFisico";
-            this.tsmEliminarFisico.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarFisico.Size = new System.Drawing.Size(110, 22);
             this.tsmEliminarFisico.Text = "Fisico";
             // 
             // tsmEliminarLogico
             // 
             this.tsmEliminarLogico.Name = "tsmEliminarLogico";
-            this.tsmEliminarLogico.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarLogico.Size = new System.Drawing.Size(110, 22);
             this.tsmEliminarLogico.Text = "Logico";
             // 
             // tsmBuscarPorFiltros

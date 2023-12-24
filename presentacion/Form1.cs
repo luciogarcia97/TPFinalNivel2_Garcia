@@ -29,6 +29,7 @@ namespace presentacion
             configurarMensajeBuscador();
             //Al apretar Ctrl + F quiero habilitar el menu del buscador
             tsmBuscarPorFiltros.ShortcutKeys = Keys.Control | Keys.F;
+            tsmAgregarArticulo.ShortcutKeys = Keys.Control | Keys.N;
         }
         private void cargar()
         {
@@ -146,6 +147,12 @@ namespace presentacion
         {
             frmVentanaDeBusqueda buscar = new frmVentanaDeBusqueda();
             buscar.ShowDialog();
+        }
+
+        private void tsmAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            frmVentanaDeAgregarArticulo agregar = new frmVentanaDeAgregarArticulo();
+            agregar.ShowDialog();
         }
     }
 }

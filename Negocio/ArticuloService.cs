@@ -53,5 +53,32 @@ namespace Negocio
             }
 
         }
+        public void agregarArticulo(Articulo item)
+        {
+            ArticuloDataAccess data = new ArticuloDataAccess();
+
+            try
+            {
+                data.setQuery("insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@codigo@,@nombre@,@descripcion@,@marca@,@categoria@,@imagen@,@precio@);");
+
+                data.setParameters("@codigo@",item.Codigo);
+                data.setParameters("@nombre@", item.Nombre);
+                data.setParameters("@descripcion@", item.Descripcion);
+                data.setParameters("@marca@", item.Marca.Id);
+                data.setParameters("@categoria@", item.Categoria.Id);
+                data.setParameters("@precio@",item.Precio);
+
+                data.execute();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            { 
+                data.close(); 
+            }
+        }
     }
 }
