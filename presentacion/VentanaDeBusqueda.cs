@@ -64,17 +64,24 @@ namespace presentacion
         //Dejo los datos de los precios en funciones a parte por si el usuario tiene que modificarlos
         private void preciosMinimos(System.Windows.Forms.ComboBox item)
         {
-            item.Items.Add("5000");
-            item.Items.Add("10000");
-            item.Items.Add("25000");
-            item.Items.Add("50000");
+
+            int precio_minimo = 5000;
+            int cantidad_opciones = 4;
+
+            for (int i = 0 ; i < cantidad_opciones +1; i++)
+            {
+                item.Items.Add(precio_minimo + (5000) * i);
+            }
         }
         private void preciosMaximos(System.Windows.Forms.ComboBox item)
         {
-            item.Items.Add("50000");
-            item.Items.Add("60000");
-            item.Items.Add("80000");
-            item.Items.Add("100000");
+            int precio_minimo = 100000;
+            int cantidad_opciones = 4;
+
+            for (int i = 0 ; i < cantidad_opciones +1; i++)
+            {
+                item.Items.Add(precio_minimo - (5000) * i);
+            }
         }
     }
 }
