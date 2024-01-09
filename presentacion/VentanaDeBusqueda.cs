@@ -64,10 +64,8 @@ namespace presentacion
         //Dejo los datos de los precios en funciones a parte por si el usuario tiene que modificarlos
         private void preciosMinimos(System.Windows.Forms.ComboBox item)
         {
-
             int precio_minimo = 5000;
             int cantidad_opciones = 4;
-
             for (int i = 0 ; i < cantidad_opciones +1; i++)
             {
                 item.Items.Add(precio_minimo + (5000) * i);
@@ -77,7 +75,6 @@ namespace presentacion
         {
             int precio_minimo = 100000;
             int cantidad_opciones = 4;
-
             for (int i = 0 ; i < cantidad_opciones +1; i++)
             {
                 item.Items.Add(precio_minimo - (5000) * i);
