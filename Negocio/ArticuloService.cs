@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,7 +90,7 @@ namespace Negocio
 
             try
             {
-                string query = "select a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion as Marca, c.Descripcion as Categoria, a.ImagenUrl, a.Precio, a.IdCategoria, a.IdMarca from ARTICULOS a left join MARCAS m on m.Id = a.IdMarca left join CATEGORIAS c on c.id = a.IdCategoria where ";
+                string query = "select a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion as Marca, c.Descripcion as Categoria, a.ImagenUrl, a.Precio, a.IdCategoria, a.IdMarca from ARTICULOS a left join MARCAS m on m.Id = a.IdMarca left join CATEGORIAS c on c.id = a.IdCategoria";
 
                 if (precio_minimo == -1)
                 {
@@ -97,16 +98,16 @@ namespace Negocio
                     {
                         if (!string.IsNullOrEmpty(marca))
                         {
-                            query += "m.Descripcion like '%@filterMarca%'";
+                            query += " where m.Descripcion like '%@filterMarca%'";
                         }
                         else if (!string.IsNullOrEmpty(categoria))
                         {
-                            query += "c.Descripcion like '%@filterCategoria%'";
+                            query += " where c.Descripcion like '%@filterCategoria%'";
                         }
                     }
                     else
                     {
-                        query += "a.Precio < @filterPrecioMax";
+                        query += " where a.Precio < @filterPrecioMax";
                         if (!string.IsNullOrEmpty(marca))
                         {
                             query += " and m.Descripcion like '%@filterMarca%'";
@@ -119,7 +120,7 @@ namespace Negocio
                 }
                 else
                 {
-                    query += "a.Precio > @filterPrecioMin";
+                    query += " where a.Precio > @filterPrecioMin";
                     if (precio_maximo == -1)
                     {
                         if (!string.IsNullOrEmpty(marca))
@@ -153,6 +154,30 @@ namespace Negocio
                 data.setParameters("@filterCategoria",categoria);
 
                 data.execute();
+                while (data.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)data.Lector["a.Id"];
+                    aux.Codigo = (string)data.Lector["a.Codigo"];
+                    aux.Nombre = (string)data.Lector["a.Nombre"];
+                    aux.Descripcion = (string)data.Lector["a.Descripcion"];
+                    if(!(data.Lector["a.ImagenUrl"] is DBNull)) 
+                        aux.UrlImagen = (string)data.Lector["a.ImagenUrl"];
+                    aux.Precio = (decimal)data.Lector["a.Precio"];
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)data.Lector["a.IdMarca"];
+                    aux.Marca.Descripcion = (string)data.Lector["m.Descripcion"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)data.Lector["a.IdCategoria"];
+                    aux.Categoria.Descripcion = (string)data.Lector["c.Descripcion"];
+                    
+                    
+
+                    list.Add(aux);
+                }
 
                 // TODO Lectura en base
             }

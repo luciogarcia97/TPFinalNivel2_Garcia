@@ -118,7 +118,7 @@ namespace presentacion
             dgvArticulosFiltrados.Columns["UrlImagen"].Visible = false;
             dgvArticulosFiltrados.Columns["Id"].Visible = false;
         }
-                private void cargarImagen(string imagen)
+        private void cargarImagen(string imagen)
         {
             try
             {
