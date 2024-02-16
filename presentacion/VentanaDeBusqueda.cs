@@ -59,7 +59,7 @@ namespace presentacion
         {
             item.DataSource = null;
             item.Items.Clear();
-            item.Text = string.Empty;
+            item.SelectedIndex = -1; // Establece el índice de selección a -1 (ninguna selección)
         }
         //Dejo los datos de los precios en funciones a parte por si el usuario tiene que modificarlos
         private void preciosMinimos(System.Windows.Forms.ComboBox item)
@@ -77,8 +77,34 @@ namespace presentacion
             int cantidad_opciones = 4;
             for (int i = 0 ; i < cantidad_opciones +1; i++)
             {
-                item.Items.Add(precio_minimo - (5000) * i);
+                precio_minimo = (precio_minimo + (5000) * i);
+                item.Items.Add(precio_minimo);
             }
         }
+        private void btnAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            ArticuloService work = new ArticuloService();
+
+            try
+            {
+                int precioBase = cbxPrecioBase.SelectedIndex;
+                int precioMaximo = (int)cbxPrecioMaximo.SelectedIndex;
+                string marca = cbxMarca.SelectedItem.ToString();
+                string categoria = cbxCategoria.SelectedItem.ToString();
+
+                EventArgs args = new EventArgs();
+                AplicarFiltro?.Invoke(this, args);
+                
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
+
+        
     }
 }
