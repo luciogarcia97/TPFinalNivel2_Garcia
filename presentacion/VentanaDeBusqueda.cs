@@ -89,12 +89,10 @@ namespace presentacion
             {
                 int precioBase = cbxPrecioBase.SelectedIndex;
                 int precioMaximo = (int)cbxPrecioMaximo.SelectedIndex;
-                string marca = cbxMarca.SelectedItem.ToString();
-                string categoria = cbxCategoria.SelectedItem.ToString();
-
-                EventArgs args = new EventArgs();
-                AplicarFiltro?.Invoke(this, args);
-                
+                string marca = "";
+                if (cbxMarca.SelectedItem != null) marca = cbxMarca.SelectedItem.ToString();
+                string categoria = "";
+                if (cbxCategoria.SelectedItem != null) categoria = cbxCategoria.SelectedItem.ToString();
 
             }
             catch (Exception ex)
