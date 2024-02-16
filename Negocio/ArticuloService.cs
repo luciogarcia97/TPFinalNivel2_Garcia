@@ -1,6 +1,8 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
@@ -79,6 +81,92 @@ namespace Negocio
             { 
                 data.close(); 
             }
+        }
+        public List<Articulo> filtrar(int precio_minimo, int precio_maximo, string marca, string categoria)
+        {
+            List<Articulo> list = new List<Articulo>();
+            ArticuloDataAccess data = new ArticuloDataAccess();
+
+            try
+            {
+                string query = "select a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion as Marca, c.Descripcion as Categoria, a.ImagenUrl, a.Precio, a.IdCategoria, a.IdMarca from ARTICULOS a left join MARCAS m on m.Id = a.IdMarca left join CATEGORIAS c on c.id = a.IdCategoria where ";
+
+                if (precio_minimo == -1)
+                {
+                    if (precio_maximo == -1)
+                    {
+                        if (!string.IsNullOrEmpty(marca))
+                        {
+                            query += "m.Descripcion like '%@filterMarca%'";
+                        }
+                        else if (!string.IsNullOrEmpty(categoria))
+                        {
+                            query += "c.Descripcion like '%@filterCategoria%'";
+                        }
+                    }
+                    else
+                    {
+                        query += "a.Precio < @filterPrecioMax";
+                        if (!string.IsNullOrEmpty(marca))
+                        {
+                            query += " and m.Descripcion like '%@filterMarca%'";
+                        }
+                        else if (!string.IsNullOrEmpty(categoria))
+                        {
+                            query += " and c.Descripcion like '%@filterCategoria%'";
+                        }
+                    }
+                }
+                else
+                {
+                    query += "a.Precio > @filterPrecioMin";
+                    if (precio_maximo == -1)
+                    {
+                        if (!string.IsNullOrEmpty(marca))
+                        {
+                            query += " and m.Descripcion like '%@filterMarca%'";
+                        }
+                        else if (!string.IsNullOrEmpty(categoria))
+                        {
+                            query += " and c.Descripcion like '%@filterCategoria%'";
+                        }
+                    }
+                    else
+                    {
+                        query += " and a.Precio < @filterPrecioMax";
+                        if (!string.IsNullOrEmpty(marca))
+                        {
+                            query += " and m.Descripcion like '%@filterMarca%'";
+                        }
+                        else if (!string.IsNullOrEmpty(categoria))
+                        {
+                            query += " and c.Descripcion like '%@filterCategoria%'";
+                        }
+                    }
+                }
+                query += " order by a.id asc";
+
+                data.setQuery(query);
+                data.setParameters("@filterPrecioMin",precio_minimo);
+                data.setParameters("@filterPrecioMax",precio_maximo);
+                data.setParameters("@filterMarca",marca);
+                data.setParameters("@filterCategoria",categoria);
+
+                data.execute();
+
+                // TODO Lectura en base
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            finally
+            {
+                data.close();
+            }
+            
+            return list;
         }
     }
 }

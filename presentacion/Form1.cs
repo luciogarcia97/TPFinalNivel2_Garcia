@@ -146,7 +146,9 @@ namespace presentacion
         private void tsmBuscar_Click(object sender, EventArgs e)
         {
             frmVentanaDeBusqueda buscar = new frmVentanaDeBusqueda();
+            this.Hide(); //Ocultamos la ventana principal para que esta sea la nueva principal cuando se utiliza el filtro
             buscar.ShowDialog();
+            this.Show(); // Volvemos a reactivar la pantalla anterior
         }
 
         private void tsmAgregarArticulo_Click(object sender, EventArgs e)

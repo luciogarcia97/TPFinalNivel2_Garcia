@@ -16,6 +16,7 @@ namespace presentacion
 {
     public partial class frmVentanaDeBusqueda : Form
     {
+        List<Articulo> listaArticulos;
         public frmVentanaDeBusqueda()
         {
             InitializeComponent();
@@ -32,8 +33,15 @@ namespace presentacion
             modificacionComboBox(cbxMarca);
             CategoriaService categoriaService = new CategoriaService();
             MarcaService marcaService = new MarcaService();
+            ArticuloService articuloService = new ArticuloService();
             try
             {
+                listaArticulos = articuloService.listArticulos();
+                dgvArticulosFiltrados.DataSource = listaArticulos;
+                //Agregado de imagenes
+                ocultarColumnas(); //Oculto la columna UrlImagen
+                cargarImagen(listaArticulos[0].UrlImagen);
+
                 cbxCategoria.DataSource = categoriaService.listar();
                 cbxCategoria.ValueMember = "Id";
                 cbxCategoria.DisplayMember = "Descripcion";
@@ -83,7 +91,8 @@ namespace presentacion
         }
         private void btnAplicarFiltro_Click(object sender, EventArgs e)
         {
-            ArticuloService work = new ArticuloService();
+            ArticuloService service = new ArticuloService();
+            
 
             try
             {
@@ -93,6 +102,8 @@ namespace presentacion
                 if (cbxMarca.SelectedItem != null) marca = cbxMarca.SelectedItem.ToString();
                 string categoria = "";
                 if (cbxCategoria.SelectedItem != null) categoria = cbxCategoria.SelectedItem.ToString();
+                
+                dgvArticulosFiltrados.DataSource = service.filtrar(precioBase, precioMaximo, marca, categoria);
 
             }
             catch (Exception ex)
@@ -102,7 +113,29 @@ namespace presentacion
             }
             
         }
+        private void ocultarColumnas()
+        {
+            dgvArticulosFiltrados.Columns["UrlImagen"].Visible = false;
+            dgvArticulosFiltrados.Columns["Id"].Visible = false;
+        }
+                private void cargarImagen(string imagen)
+        {
+            try
+            {
+            if (!string.IsNullOrEmpty(imagen)) //Corroboro que no sea null para que no rompa.
+                pbxImagenCatalogoFiltrado.Load(imagen);
+            else
+                placerHolder();
+            }
+            catch (Exception)
+            {
+                placerHolder();
+            }
+        }
+        private void placerHolder()
+        {
+            pbxImagenCatalogoFiltrado.Load("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png");
+        }
 
-        
     }
 }
