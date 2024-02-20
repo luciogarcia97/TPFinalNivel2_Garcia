@@ -98,11 +98,11 @@ namespace Negocio
                     {
                         if (!string.IsNullOrEmpty(marca))
                         {
-                            query += " where m.Descripcion like '%@filterMarca%'";
+                            query += " where m.Descripcion like '%' + @filterMarca + '%'";
                         }
-                        else if (!string.IsNullOrEmpty(categoria))
+                        if (!string.IsNullOrEmpty(categoria))
                         {
-                            query += " where c.Descripcion like '%@filterCategoria%'";
+                            query += " where c.Descripcion like '%' + @filterCategoria + '%'";
                         }
                     }
                     else
@@ -110,11 +110,11 @@ namespace Negocio
                         query += " where a.Precio < @filterPrecioMax";
                         if (!string.IsNullOrEmpty(marca))
                         {
-                            query += " and m.Descripcion like '%@filterMarca%'";
+                            query += " and m.Descripcion like '%' + @filterMarca + '%'";
                         }
-                        else if (!string.IsNullOrEmpty(categoria))
+                        if (!string.IsNullOrEmpty(categoria))
                         {
-                            query += " and c.Descripcion like '%@filterCategoria%'";
+                            query += " and c.Descripcion like '%' + @filterCategoria + '%'";
                         }
                     }
                 }
@@ -125,11 +125,11 @@ namespace Negocio
                     {
                         if (!string.IsNullOrEmpty(marca))
                         {
-                            query += " and m.Descripcion like '%@filterMarca%'";
+                            query += " and m.Descripcion like '%' + @filterMarca + '%'";
                         }
-                        else if (!string.IsNullOrEmpty(categoria))
+                        if (!string.IsNullOrEmpty(categoria))
                         {
-                            query += " and c.Descripcion like '%@filterCategoria%'";
+                            query += " and c.Descripcion like '%' + @filterCategoria + '%'";
                         }
                     }
                     else
@@ -137,11 +137,11 @@ namespace Negocio
                         query += " and a.Precio < @filterPrecioMax";
                         if (!string.IsNullOrEmpty(marca))
                         {
-                            query += " and m.Descripcion like '%@filterMarca%'";
+                            query += " and m.Descripcion like '%' + @filterMarca + '%'";
                         }
-                        else if (!string.IsNullOrEmpty(categoria))
+                        if (!string.IsNullOrEmpty(categoria))
                         {
-                            query += " and c.Descripcion like '%@filterCategoria%'";
+                            query += " and c.Descripcion like '%' + @filterCategoria + '%'";
                         }
                     }
                 }
@@ -158,23 +158,20 @@ namespace Negocio
                 {
                     Articulo aux = new Articulo();
 
-                    aux.Id = (int)data.Lector["a.Id"];
-                    aux.Codigo = (string)data.Lector["a.Codigo"];
-                    aux.Nombre = (string)data.Lector["a.Nombre"];
-                    aux.Descripcion = (string)data.Lector["a.Descripcion"];
-                    if(!(data.Lector["a.ImagenUrl"] is DBNull)) 
-                        aux.UrlImagen = (string)data.Lector["a.ImagenUrl"];
-                    aux.Precio = (decimal)data.Lector["a.Precio"];
+                    aux.Id = (int)data.Lector.GetInt32(0);
+                    aux.Codigo = (string)data.Lector["Codigo"];
+                    aux.Nombre = (string)data.Lector["Nombre"];
+                    aux.Descripcion = (string)data.Lector["Descripcion"];
+                    if(!(data.Lector["ImagenUrl"] is DBNull)) aux.UrlImagen = (string)data.Lector["ImagenUrl"];
+                    aux.Precio = (decimal)data.Lector["Precio"];
 
                     aux.Marca = new Marca();
-                    aux.Marca.Id = (int)data.Lector["a.IdMarca"];
-                    aux.Marca.Descripcion = (string)data.Lector["m.Descripcion"];
+                    aux.Marca.Id = (int)data.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)data.Lector["Marca"];
 
                     aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)data.Lector["a.IdCategoria"];
-                    aux.Categoria.Descripcion = (string)data.Lector["c.Descripcion"];
-                    
-                    
+                    aux.Categoria.Id = (int)data.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)data.Lector["Categoria"];
 
                     list.Add(aux);
                 }
@@ -183,7 +180,6 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                
                 throw ex;
             }
             finally

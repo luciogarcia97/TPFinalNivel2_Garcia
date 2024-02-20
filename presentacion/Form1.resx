@@ -124,11 +124,20 @@
   <data name="btnBuscarGeneral.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAQdJREFUSEvtlUFOAkEQRWeLwNYLiUTjSfQMLITD6QFcuNCFKHcwruS/hsp0ftOB
+        DAAACwwBP0AiyAAAAQdJREFUSEvtlUFOAkEQRWeLwNYLiUTjSfQMLITD6QFcuNCFKHcwruS/hsp0ftOB
         GSFueMkLVFHVNdPTGZozXbmTK/nb0y95K6tQsKuxi5+yShT1ZW//vwy4kAv5Ln+2n3M5kE7nASz+LCOf
         +yR9SPxWxQu4cuIPeSWHciKXkvyjzPH+Ai9gO4hZPOdakn9LUYv3F3gBe048SlHLWJL/TlGL9xd4QdwB
         25ITd/CaohbvL/ACTgsxz4BFuZOpjGcwkzneX+AFnBJOS+TdF3kpg8hX2VXAEE4LD5Q9Z1u4chb3Ib0G
         1GDRGPJAQhx1ADDkfvM1cfQBzt7+k7+u+bP4yxAWv5FnDqVp1jCQrjolwXRrAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnHome.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        cAAAAHABznhikwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB4SURBVDhPY6A1
+        cIRisoATEL+GYhCbJGALxK+A2BnKfgllEwWQNcMA0YZg0wwDBA3BpxkGcBoCCqSvQNwK5uEHIDUgtSgB
+        WwbEu4G4AcyDgP9oGAZAakBqQXpQAEgC3QAYQDcAWR0cDBMDQAqRMQygi2M1YCAAAwMAtGQx7yJI9koA
+        AAAASUVORK5CYII=
 </value>
   </data>
 </root>
