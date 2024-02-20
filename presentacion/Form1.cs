@@ -27,25 +27,48 @@ namespace presentacion
             cargar();
             //Frase en el buscador
             configurarMensajeBuscador();
-            //Al apretar Ctrl + F quiero habilitar el menu del buscador
-            tsmBuscarPorFiltros.ShortcutKeys = Keys.Control | Keys.F;
+            //Al apretar Ctrl + N aparece el menu de crear articulo
             tsmAgregarArticulo.ShortcutKeys = Keys.Control | Keys.N;
         }
         private void cargar()
         {
             ArticuloService service = new ArticuloService();
+            modificacionComboBox(cbxCategoria);
+            modificacionComboBox(cbxMarca);
+            CategoriaService categoriaService = new CategoriaService();
+            MarcaService marcaService = new MarcaService();
+            ArticuloService articuloService = new ArticuloService();
+
             try
             {
                 listaArticulos = service.listArticulos();
                 dgvArticulos.DataSource = listaArticulos;
+
+                // Carga de datos combobox filtro
+
+                cbxCategoria.DataSource = categoriaService.listar();
+                cbxCategoria.ValueMember = "Id";
+                cbxCategoria.DisplayMember = "Descripcion";
+                cbxMarca.DataSource = marcaService.listar();
+                cbxMarca.ValueMember = "Id";
+                cbxMarca.DisplayMember = "Descripcion";
+
+                //Para que no se muestren
+                cbxCategoria.SelectedItem = null; 
+                cbxMarca.SelectedItem = null;
+
                 //Agregado de imagenes
                 ocultarColumnas(); //Oculto la columna UrlImagen
                 cargarImagen(listaArticulos[0].UrlImagen);
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            preciosMinimos(cbxPrecioBase);
+            preciosMaximos(cbxPrecioMaximo);
         }
         private void cargarImagen(string imagen)
         {
@@ -142,11 +165,93 @@ namespace presentacion
             }
         }
 
-        //Busqueda por filtros
-        private void tsmBuscar_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            frmVentanaDeBusqueda buscar = new frmVentanaDeBusqueda();
-            buscar.ShowDialog();
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaArticulos;
+            ocultarColumnas();
+            tbxBuscador.Clear();
+        }
+
+        //Busqueda por filtros
+        
+        //Con esta funcion dejamos los cbx vacios cuando cargue
+        private void modificacionComboBox(System.Windows.Forms.ComboBox item)
+        {
+            item.DataSource = null;
+            item.Items.Clear();
+            item.SelectedIndex = -1; // Establece el índice de selección a -1 (ninguna selección)
+        }
+        //Dejo los datos de los precios en funciones a parte por si el usuario tiene que modificarlos
+        private void preciosMinimos(System.Windows.Forms.ComboBox item)
+        {
+            int precio_minimo = 50;
+            int cantidad_opciones = 4;
+            for (int i = 0 ; i <= cantidad_opciones; i++)
+            {
+                item.Items.Add(precio_minimo + (150) * i);
+            }
+        }
+        private void preciosMaximos(System.Windows.Forms.ComboBox item)
+        {
+            int precio_minimo = 100000;
+            int cantidad_opciones = 4;
+            for (int i = 0 ; i <= cantidad_opciones; i++)
+            {
+                precio_minimo = (precio_minimo + (5000) * i);
+                item.Items.Add(precio_minimo);
+            }
+        }
+        private void btnAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            ArticuloService service = new ArticuloService();
+            try
+            {
+                int precioBase = 0, precioMaximo = 0; //Declaro las variables, si esto funciona se pisa el valor, si falla, salta el mensaje de error.
+                if (cbxPrecioBase.SelectedItem != null)
+                {
+                    if (int.TryParse(cbxPrecioBase.SelectedItem.ToString(), out int selectedValue))
+                    {
+                        precioBase = selectedValue;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo fallo, intente nuevamente");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No selecciono un precio base, por favor revise los filtros");
+                }
+                if (cbxPrecioMaximo.SelectedItem != null)
+                {
+                    precioMaximo = 0;
+                    if (int.TryParse(cbxPrecioMaximo.SelectedItem.ToString(), out int selectedValue))
+                    {
+                        precioMaximo = selectedValue;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo fallo, intente nuevamente");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No selecciono un precio maximo, por favor revise los filtros");
+                }
+                string marca = "";
+                string categoria = "";
+                if (!(cbxMarca.SelectedItem is null)) marca = cbxMarca.SelectedItem.ToString();
+                if (!(cbxCategoria.SelectedItem is null)) categoria = cbxCategoria.SelectedItem.ToString();
+                
+                dgvArticulos.DataSource = service.filtrar(precioBase, precioMaximo, marca, categoria);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void tsmAgregarArticulo_Click(object sender, EventArgs e)
@@ -154,5 +259,13 @@ namespace presentacion
             frmVentanaDeAgregarArticulo agregar = new frmVentanaDeAgregarArticulo();
             agregar.ShowDialog();
         }
+        
+        /*
+            TO DO
+                Boton para eliminar filtros opcionales
+                Mejorar montos minimos
+                Al presionar inicio se deben borrar todos los filtros, tambien debe aparecer el mensaje de busqueda
+                Al no devolver nada, que muestre vacio o cartel de nada para mostrar
+        */
     }
 }

@@ -60,12 +60,6 @@
     <Compile Include="VentanaDeAgregarArticulo.Designer.cs">
       <DependentUpon>VentanaDeAgregarArticulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaDeBusqueda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentanaDeBusqueda.Designer.cs">
-      <DependentUpon>VentanaDeBusqueda.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,9 +74,6 @@
     </Compile>
     <EmbeddedResource Include="VentanaDeAgregarArticulo.resx">
       <DependentUpon>VentanaDeAgregarArticulo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanaDeBusqueda.resx">
-      <DependentUpon>VentanaDeBusqueda.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
