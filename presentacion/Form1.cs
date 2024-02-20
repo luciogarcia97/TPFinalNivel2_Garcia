@@ -171,6 +171,8 @@ namespace presentacion
             dgvArticulos.DataSource = listaArticulos;
             ocultarColumnas();
             tbxBuscador.Clear();
+            ocultarComboBoxes(cbxMarca);
+            ocultarComboBoxes(cbxCategoria);
         }
 
         //Busqueda por filtros
@@ -185,12 +187,11 @@ namespace presentacion
         //Dejo los datos de los precios en funciones a parte por si el usuario tiene que modificarlos
         private void preciosMinimos(System.Windows.Forms.ComboBox item)
         {
-            int precio_minimo = 50;
-            int cantidad_opciones = 4;
-            for (int i = 0 ; i <= cantidad_opciones; i++)
-            {
-                item.Items.Add(precio_minimo + (150) * i);
-            }
+            item.Items.Add(50);
+            item.Items.Add(20000);
+            item.Items.Add(40000);
+            item.Items.Add(60000);
+            item.Items.Add(80000);
         }
         private void preciosMaximos(System.Windows.Forms.ComboBox item)
         {
@@ -259,13 +260,32 @@ namespace presentacion
             frmVentanaDeAgregarArticulo agregar = new frmVentanaDeAgregarArticulo();
             agregar.ShowDialog();
         }
-        
+
+        private void btnEliminarFiltroMarca_Click(object sender, EventArgs e)
+        {
+            ocultarComboBoxes(cbxMarca);
+        }
+
+        private void btnEliminarFiltroCategoria_Click(object sender, EventArgs e)
+        {
+            ocultarComboBoxes(cbxCategoria);
+        }
+        private void ocultarComboBoxes(ComboBox items)
+        {
+            items.SelectedIndex = -1; // Establece el índice de selección a -1 (ninguna selección)
+        }
+
         /*
             TO DO
-                Boton para eliminar filtros opcionales
-                Mejorar montos minimos
-                Al presionar inicio se deben borrar todos los filtros, tambien debe aparecer el mensaje de busqueda
-                Al no devolver nada, que muestre vacio o cartel de nada para mostrar
+                    *Boton para eliminar filtros opcionales 
+                    *Mejorar montos minimos
+                    *Al presionar inicio se deben borrar todos los filtros, tambien debe aparecer el mensaje de busqueda
+                
+                
+                Posible mejora
+                    Al no devolver nada, que muestre vacio o cartel de nada para mostrar
+                    Mensaje de vuelta en el buscador
+                    icono de tacho de basura a cambiar
         */
     }
 }
