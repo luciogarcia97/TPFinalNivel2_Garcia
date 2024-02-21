@@ -41,5 +41,24 @@ namespace Negocio
                 data.close();
             }
         }
+        public void agregar(Categoria item)
+		{
+			ArticuloDataAccess data = new ArticuloDataAccess();
+			try
+			{
+				data.setQuery("Insert into CATEGORIAS (Descripcion) values (@Descripcion@);");
+				data.setParameters("@Descripcion@",item.Descripcion);
+				data.execute();
+			}
+			catch (System.Exception ex)
+			{
+				
+				throw ex;
+			}
+			finally
+			{
+				data.close();
+			}
+		}
     }
 }
