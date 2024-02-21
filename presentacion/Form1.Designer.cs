@@ -109,8 +109,9 @@ namespace presentacion
             // tsmModificarArticulo
             // 
             this.tsmModificarArticulo.Name = "tsmModificarArticulo";
-            this.tsmModificarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tsmModificarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tsmModificarArticulo.Text = "Modificar";
+            this.tsmModificarArticulo.Click += new System.EventHandler(this.tsmModificarArticulo_Click);
             // 
             // tsmEliminarArticulo
             // 

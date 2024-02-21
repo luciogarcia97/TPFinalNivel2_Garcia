@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentanaDeAgregarArticulo));
             this.lblCodigo = new System.Windows.Forms.Label();
             this.tbxCodigo = new System.Windows.Forms.TextBox();
             this.tbxNombre = new System.Windows.Forms.TextBox();
@@ -42,9 +43,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbxPrecio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnAgregarNuevaMarca = new System.Windows.Forms.Button();
             this.btnAgregarNuevCategoria = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.pbxImagenNuevo = new System.Windows.Forms.PictureBox();
+            this.btnVerImagen = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagenNuevo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -161,15 +166,15 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Precio:";
             // 
-            // btnAgregarArticulo
+            // btnAceptar
             // 
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(272, 260);
-            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
-            this.btnAgregarArticulo.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregarArticulo.TabIndex = 15;
-            this.btnAgregarArticulo.Text = "Agregar";
-            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
-            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
+            this.btnAceptar.Location = new System.Drawing.Point(223, 270);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 15;
+            this.btnAceptar.Text = "Agregar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnAgregarNuevaMarca
             // 
@@ -191,14 +196,45 @@
             this.btnAgregarNuevCategoria.UseVisualStyleBackColor = true;
             this.btnAgregarNuevCategoria.Click += new System.EventHandler(this.btnAgregarNuevCategoria_Click);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(25, 270);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // pbxImagenNuevo
+            // 
+            this.pbxImagenNuevo.Location = new System.Drawing.Point(359, 19);
+            this.pbxImagenNuevo.Name = "pbxImagenNuevo";
+            this.pbxImagenNuevo.Size = new System.Drawing.Size(179, 213);
+            this.pbxImagenNuevo.TabIndex = 19;
+            this.pbxImagenNuevo.TabStop = false;
+            // 
+            // btnVerImagen
+            // 
+            this.btnVerImagen.Image = ((System.Drawing.Image)(resources.GetObject("btnVerImagen.Image")));
+            this.btnVerImagen.Location = new System.Drawing.Point(277, 186);
+            this.btnVerImagen.Name = "btnVerImagen";
+            this.btnVerImagen.Size = new System.Drawing.Size(38, 20);
+            this.btnVerImagen.TabIndex = 21;
+            this.btnVerImagen.UseVisualStyleBackColor = true;
+            this.btnVerImagen.Click += new System.EventHandler(this.btnVerImagen_Click);
+            // 
             // frmVentanaDeAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 295);
+            this.ClientSize = new System.Drawing.Size(562, 305);
+            this.Controls.Add(this.btnVerImagen);
+            this.Controls.Add(this.pbxImagenNuevo);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgregarNuevCategoria);
             this.Controls.Add(this.btnAgregarNuevaMarca);
-            this.Controls.Add(this.btnAgregarArticulo);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.tbxPrecio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbxImagenUrl);
@@ -216,6 +252,7 @@
             this.Name = "frmVentanaDeAgregarArticulo";
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.frmVentanaDeAgregarArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxImagenNuevo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,8 +274,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxPrecio;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAgregarArticulo;
+        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnAgregarNuevaMarca;
         private System.Windows.Forms.Button btnAgregarNuevCategoria;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.PictureBox pbxImagenNuevo;
+        private System.Windows.Forms.Button btnVerImagen;
     }
 }

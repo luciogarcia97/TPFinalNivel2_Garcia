@@ -56,6 +56,34 @@ namespace Negocio
             }
 
         }
+        public void modificarArticulo(Articulo item)
+        {
+            ArticuloDataAccess data = new ArticuloDataAccess();
+            try
+            {
+                data.setQuery("UPDATE articulos SET codigo = @Codigo@, nombre = @Nombre@, descripcion = @Descripcion@, idMarca = @Marca@, idCategoria = @Categoria@, ImagenUrl = @ImagenUrl@, precio = @Precio@ WHERE Id = @ID@;");
+
+                data.setParameters("@ID@", item.Id);
+                data.setParameters("@codigo@",item.Codigo);
+                data.setParameters("@nombre@", item.Nombre);
+                data.setParameters("@descripcion@", item.Descripcion);
+                data.setParameters("@marca@", item.Marca.Id);
+                data.setParameters("@categoria@", item.Categoria.Id);
+                data.setParameters("@ImagenUrl@",item.UrlImagen);
+                data.setParameters("@precio@",item.Precio);
+
+                data.execute();
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+            finally
+            {
+                data.close();
+            }
+        }
         public void agregarArticulo(Articulo item)
         {
             ArticuloDataAccess data = new ArticuloDataAccess();
@@ -69,6 +97,7 @@ namespace Negocio
                 data.setParameters("@descripcion@", item.Descripcion);
                 data.setParameters("@marca@", item.Marca.Id);
                 data.setParameters("@categoria@", item.Categoria.Id);
+                data.setParameters("@imagen@",item.UrlImagen);
                 data.setParameters("@precio@",item.Precio);
 
                 data.execute();
@@ -175,8 +204,6 @@ namespace Negocio
 
                     list.Add(aux);
                 }
-
-                // TODO Lectura en base
             }
             catch (Exception ex)
             {

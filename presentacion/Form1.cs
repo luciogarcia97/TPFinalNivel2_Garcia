@@ -27,8 +27,11 @@ namespace presentacion
             cargar();
             //Frase en el buscador
             configurarMensajeBuscador();
+            
             //Al apretar Ctrl + N aparece el menu de crear articulo
             tsmAgregarArticulo.ShortcutKeys = Keys.Control | Keys.N;
+            //Al apretar Ctrl + M aparece el menu de modificar articulo
+            tsmModificarArticulo.ShortcutKeys = Keys.Control | Keys.M;
         }
         private void cargar()
         {
@@ -259,6 +262,7 @@ namespace presentacion
         {
             frmVentanaDeAgregarArticulo agregar = new frmVentanaDeAgregarArticulo();
             agregar.ShowDialog();
+            cargar();
         }
 
         private void btnEliminarFiltroMarca_Click(object sender, EventArgs e)
@@ -274,13 +278,19 @@ namespace presentacion
         {
             items.SelectedIndex = -1; // Establece el índice de selección a -1 (ninguna selección)
         }
+        private void tsmModificarArticulo_Click(object sender, EventArgs e)
+        {
+            Articulo selected = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
+            frmVentanaDeAgregarArticulo modify = new frmVentanaDeAgregarArticulo(selected);
+            modify.ShowDialog();
+            cargar();
+        }
         /*
             TO DO
-                    *Boton para eliminar filtros opcionales 
-                    *Mejorar montos minimos
-                    *Al presionar inicio se deben borrar todos los filtros, tambien debe aparecer el mensaje de busqueda
-                
+                VER DETALLE https://campusmaxiprograma.com/mod/forum/discuss.php?d=2539
+                Eliminacion, hacer toda la funcionalidad
+                Todo lo que respecte a bugs de la app y por ultimo la belleza
                 
                 Posible mejora
                     Al no devolver nada, que muestre vacio o cartel de nada para mostrar
