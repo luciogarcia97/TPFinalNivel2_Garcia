@@ -68,6 +68,7 @@ namespace presentacion
             this.dgvArticulos.Size = new System.Drawing.Size(643, 331);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_DoubleClick);
             // 
             // pbxImagenCatalogo
             // 

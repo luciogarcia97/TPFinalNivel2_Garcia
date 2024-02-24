@@ -315,16 +315,21 @@ namespace presentacion
         {
             eliminar();
         }
+
+        private void dgvArticulos_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
         /*
-   TO DO
-       VER DETALLE https://campusmaxiprograma.com/mod/forum/discuss.php?d=2539
-       Todo lo que respecte a bugs de la app y por ultimo la belleza
+TO DO
+VER DETALLE https://campusmaxiprograma.com/mod/forum/discuss.php?d=2539
+Todo lo que respecte a bugs de la app y por ultimo la belleza
 
 
-       Posible mejora
-           Al no devolver nada, que muestre vacio o cartel de nada para mostrar
-           Mensaje de vuelta en el buscador
-           icono de tacho de basura a cambiar
+Posible mejora
+  Al no devolver nada, que muestre vacio o cartel de nada para mostrar
+  Mensaje de vuelta en el buscador
+  icono de tacho de basura a cambiar
 */
     }
 }
