@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Dominio;
+using System.Reflection.Emit;
 
 namespace presentacion
 {
@@ -32,6 +33,8 @@ namespace presentacion
             tsmAgregarArticulo.ShortcutKeys = Keys.Control | Keys.N;
             //Al apretar Ctrl + M aparece el menu de modificar articulo
             tsmModificarArticulo.ShortcutKeys = Keys.Control | Keys.M;
+            //Al apretar Ctrl + D aparece la confirmacion de eliminar.
+            tsmEliminarFisico.ShortcutKeys = Keys.Control | Keys.D;
         }
         private void cargar()
         {
@@ -286,16 +289,42 @@ namespace presentacion
             modify.ShowDialog();
             cargar();
         }
+        private void eliminar()
+        {
+            ArticuloService service = new ArticuloService();
+            Articulo selected = new Articulo();
+
+            try
+            {
+                selected = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                DialogResult check = MessageBox.Show("Desesar eliminar el articulo" + selected.Nombre + "?", "Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (check == DialogResult.OK)
+                {
+                    service.eliminar(selected.Id);
+                    MessageBox.Show("Articulo eliminado");
+                    cargar();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void tsmEliminarFisico_Click(object sender, EventArgs e)
+        {
+            eliminar();
+        }
         /*
-            TO DO
-                VER DETALLE https://campusmaxiprograma.com/mod/forum/discuss.php?d=2539
-                Eliminacion, hacer toda la funcionalidad
-                Todo lo que respecte a bugs de la app y por ultimo la belleza
-                
-                Posible mejora
-                    Al no devolver nada, que muestre vacio o cartel de nada para mostrar
-                    Mensaje de vuelta en el buscador
-                    icono de tacho de basura a cambiar
-        */
+   TO DO
+       VER DETALLE https://campusmaxiprograma.com/mod/forum/discuss.php?d=2539
+       Todo lo que respecte a bugs de la app y por ultimo la belleza
+
+
+       Posible mejora
+           Al no devolver nada, que muestre vacio o cartel de nada para mostrar
+           Mensaje de vuelta en el buscador
+           icono de tacho de basura a cambiar
+*/
     }
 }

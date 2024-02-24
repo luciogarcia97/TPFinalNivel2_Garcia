@@ -39,7 +39,6 @@ namespace presentacion
             this.tsmModificarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarFisico = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminarLogico = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBuscarGeneral = new System.Windows.Forms.Button();
             this.tbxBuscador = new System.Windows.Forms.TextBox();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
@@ -102,7 +101,7 @@ namespace presentacion
             // tsmAgregarArticulo
             // 
             this.tsmAgregarArticulo.Name = "tsmAgregarArticulo";
-            this.tsmAgregarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tsmAgregarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tsmAgregarArticulo.Text = "Agregar";
             this.tsmAgregarArticulo.Click += new System.EventHandler(this.tsmAgregarArticulo_Click);
             // 
@@ -116,23 +115,17 @@ namespace presentacion
             // tsmEliminarArticulo
             // 
             this.tsmEliminarArticulo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmEliminarFisico,
-            this.tsmEliminarLogico});
+            this.tsmEliminarFisico});
             this.tsmEliminarArticulo.Name = "tsmEliminarArticulo";
-            this.tsmEliminarArticulo.Size = new System.Drawing.Size(125, 22);
+            this.tsmEliminarArticulo.Size = new System.Drawing.Size(180, 22);
             this.tsmEliminarArticulo.Text = "Eliminar";
             // 
             // tsmEliminarFisico
             // 
             this.tsmEliminarFisico.Name = "tsmEliminarFisico";
-            this.tsmEliminarFisico.Size = new System.Drawing.Size(110, 22);
-            this.tsmEliminarFisico.Text = "Fisico";
-            // 
-            // tsmEliminarLogico
-            // 
-            this.tsmEliminarLogico.Name = "tsmEliminarLogico";
-            this.tsmEliminarLogico.Size = new System.Drawing.Size(110, 22);
-            this.tsmEliminarLogico.Text = "Logico";
+            this.tsmEliminarFisico.Size = new System.Drawing.Size(189, 22);
+            this.tsmEliminarFisico.Text = "Articulo Seleccionado";
+            this.tsmEliminarFisico.Click += new System.EventHandler(this.tsmEliminarFisico_Click);
             // 
             // btnBuscarGeneral
             // 
@@ -332,7 +325,6 @@ namespace presentacion
         private System.Windows.Forms.ToolStripMenuItem tsmModificarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarFisico;
-        private System.Windows.Forms.ToolStripMenuItem tsmEliminarLogico;
         private System.Windows.Forms.Button btnBuscarGeneral;
         private System.Windows.Forms.TextBox tbxBuscador;
         private System.Windows.Forms.ComboBox cbxCategoria;

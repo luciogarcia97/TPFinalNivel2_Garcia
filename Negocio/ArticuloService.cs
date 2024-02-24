@@ -216,5 +216,23 @@ namespace Negocio
             
             return list;
         }
+        public void eliminar(int id)
+        {
+            ArticuloDataAccess data = new ArticuloDataAccess();
+            try
+            {
+                data.setQuery("delete from ARTICULOS where Id = @Id;");
+                data.setParameters("@Id", id);
+                data.execute();
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.close();
+            }
+        }
     }
 }
