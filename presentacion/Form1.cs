@@ -318,13 +318,19 @@ namespace presentacion
 
         private void dgvArticulos_DoubleClick(object sender, EventArgs e)
         {
-
+            Articulo selected = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmDetalleProducto window = new frmDetalleProducto(selected);
+            window.ShowDialog();
+            cargar();
         }
         /*
 TO DO
-VER DETALLE https://campusmaxiprograma.com/mod/forum/discuss.php?d=2539
 Todo lo que respecte a bugs de la app y por ultimo la belleza
 
+strech en la imagen de agregar articulo y modificar.
+validacion de cantidad de caracteres en todos los campos.
+agregar espacio en el mensaje de deseas eliminar?
+ver si cuando vuelve al buscador aparezca el producto seleccionado primero
 
 Posible mejora
   Al no devolver nada, que muestre vacio o cartel de nada para mostrar
