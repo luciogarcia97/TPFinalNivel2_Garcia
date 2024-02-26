@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace presentacion
 {
@@ -53,8 +54,8 @@ namespace presentacion
             this.btnHome = new System.Windows.Forms.Button();
             this.lblOpcionales = new System.Windows.Forms.Label();
             this.lblTituloBusqueda = new System.Windows.Forms.Label();
-            this.btnEliminarFiltroMarca = new System.Windows.Forms.Button();
             this.btnEliminarFiltroCategoria = new System.Windows.Forms.Button();
+            this.btnEliminarFiltroMarca = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenCatalogo)).BeginInit();
             this.mnsBarradeAcciones.SuspendLayout();
@@ -102,14 +103,14 @@ namespace presentacion
             // tsmAgregarArticulo
             // 
             this.tsmAgregarArticulo.Name = "tsmAgregarArticulo";
-            this.tsmAgregarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmAgregarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmAgregarArticulo.Text = "Agregar";
             this.tsmAgregarArticulo.Click += new System.EventHandler(this.tsmAgregarArticulo_Click);
             // 
             // tsmModificarArticulo
             // 
             this.tsmModificarArticulo.Name = "tsmModificarArticulo";
-            this.tsmModificarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmModificarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmModificarArticulo.Text = "Modificar";
             this.tsmModificarArticulo.Click += new System.EventHandler(this.tsmModificarArticulo_Click);
             // 
@@ -118,7 +119,7 @@ namespace presentacion
             this.tsmEliminarArticulo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmEliminarFisico});
             this.tsmEliminarArticulo.Name = "tsmEliminarArticulo";
-            this.tsmEliminarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmEliminarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmEliminarArticulo.Text = "Eliminar";
             // 
             // tsmEliminarFisico
@@ -256,16 +257,6 @@ namespace presentacion
             this.lblTituloBusqueda.TabIndex = 21;
             this.lblTituloBusqueda.Text = "Busqueda por rango de precios";
             // 
-            // btnEliminarFiltroMarca
-            // 
-            this.btnEliminarFiltroMarca.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarFiltroMarca.Image")));
-            this.btnEliminarFiltroMarca.Location = new System.Drawing.Point(526, 463);
-            this.btnEliminarFiltroMarca.Name = "btnEliminarFiltroMarca";
-            this.btnEliminarFiltroMarca.Size = new System.Drawing.Size(20, 21);
-            this.btnEliminarFiltroMarca.TabIndex = 22;
-            this.btnEliminarFiltroMarca.UseVisualStyleBackColor = true;
-            this.btnEliminarFiltroMarca.Click += new System.EventHandler(this.btnEliminarFiltroMarca_Click);
-            // 
             // btnEliminarFiltroCategoria
             // 
             this.btnEliminarFiltroCategoria.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -276,6 +267,17 @@ namespace presentacion
             this.btnEliminarFiltroCategoria.TabIndex = 23;
             this.btnEliminarFiltroCategoria.UseVisualStyleBackColor = true;
             this.btnEliminarFiltroCategoria.Click += new System.EventHandler(this.btnEliminarFiltroCategoria_Click);
+            // 
+            // btnEliminarFiltroMarca
+            // 
+            this.btnEliminarFiltroMarca.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarFiltroMarca.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarFiltroMarca.Image")));
+            this.btnEliminarFiltroMarca.Location = new System.Drawing.Point(526, 463);
+            this.btnEliminarFiltroMarca.Name = "btnEliminarFiltroMarca";
+            this.btnEliminarFiltroMarca.Size = new System.Drawing.Size(20, 21);
+            this.btnEliminarFiltroMarca.TabIndex = 22;
+            this.btnEliminarFiltroMarca.UseVisualStyleBackColor = true;
+            this.btnEliminarFiltroMarca.Click += new System.EventHandler(this.btnEliminarFiltroMarca_Click);
             // 
             // frmCatalogo
             // 
@@ -340,8 +342,8 @@ namespace presentacion
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Label lblOpcionales;
         private System.Windows.Forms.Label lblTituloBusqueda;
-        private System.Windows.Forms.Button btnEliminarFiltroMarca;
         private System.Windows.Forms.Button btnEliminarFiltroCategoria;
+        private Button btnEliminarFiltroMarca;
     }
 }
 

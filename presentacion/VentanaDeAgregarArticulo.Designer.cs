@@ -211,6 +211,7 @@
             this.pbxImagenNuevo.Location = new System.Drawing.Point(359, 19);
             this.pbxImagenNuevo.Name = "pbxImagenNuevo";
             this.pbxImagenNuevo.Size = new System.Drawing.Size(179, 213);
+            this.pbxImagenNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagenNuevo.TabIndex = 19;
             this.pbxImagenNuevo.TabStop = false;
             // 
@@ -250,6 +251,7 @@
             this.Controls.Add(this.tbxCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Name = "frmVentanaDeAgregarArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.frmVentanaDeAgregarArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenNuevo)).EndInit();

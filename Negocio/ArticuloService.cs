@@ -39,6 +39,7 @@ namespace Negocio
                     unit.Marca.Descripcion = (string)datos.Lector["Marca"];
                     unit.UrlImagen = (string)datos.Lector["UrlImagen"];
                     unit.Precio = (decimal)datos.Lector["Precio"];
+                    unit.Precio = formateoDecimales(unit.Precio);
 
                     lista.Add(unit);
                 }
@@ -233,6 +234,13 @@ namespace Negocio
             {
                 data.close();
             }
+        }
+        private decimal formateoDecimales(decimal item)
+        {
+            string aux = Math.Round(item).ToString("N2");
+            decimal number = decimal.Parse(aux);
+
+            return number;
         }
     }
 }

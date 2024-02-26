@@ -43,7 +43,6 @@ namespace presentacion
             modificacionComboBox(cbxMarca);
             CategoriaService categoriaService = new CategoriaService();
             MarcaService marcaService = new MarcaService();
-            ArticuloService articuloService = new ArticuloService();
 
             try
             {
@@ -297,7 +296,7 @@ namespace presentacion
             try
             {
                 selected = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                DialogResult check = MessageBox.Show("Desesar eliminar el articulo" + selected.Nombre + "?", "Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                DialogResult check = MessageBox.Show("Desesar eliminar el Articulo "+ selected.Nombre + "?", "Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (check == DialogResult.OK)
                 {
                     service.eliminar(selected.Id);
@@ -321,21 +320,28 @@ namespace presentacion
             Articulo selected = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmDetalleProducto window = new frmDetalleProducto(selected);
             window.ShowDialog();
-            cargar();
+            // Buscar la fila que contiene el artículo con el Id especificado
+            foreach (DataGridViewRow fila in dgvArticulos.Rows)
+            {
+                if (Convert.ToInt32(fila.Cells["Id"].Value) == selected.Id)
+                {
+                    fila.Selected = true; // Seleccionar la fila
+                    break; // Salir del bucle una vez encontrado el registro
+                }
+            }
         }
+    }
+}
         /*
 TO DO
 Todo lo que respecte a bugs de la app y por ultimo la belleza
 
-strech en la imagen de agregar articulo y modificar.
 validacion de cantidad de caracteres en todos los campos.
-agregar espacio en el mensaje de deseas eliminar?
-ver si cuando vuelve al buscador aparezca el producto seleccionado primero
+borrar precio en el filtrado inferior.
+si se intenta agregar una marca o cate vacia no hace nada, que tire mensaje de error.
 
 Posible mejora
   Al no devolver nada, que muestre vacio o cartel de nada para mostrar
   Mensaje de vuelta en el buscador
   icono de tacho de basura a cambiar
 */
-    }
-}

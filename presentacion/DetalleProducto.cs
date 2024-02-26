@@ -33,10 +33,6 @@ namespace presentacion
 
             try
             {
-                if (articulo is null)
-                {
-                    MessageBox.Show("entra en null");
-                }
                 tbxDescripcionMaestro.Text = articulo.Descripcion;
                 tbxMarcaMaestro.Text = articulo.Marca.Descripcion;
                 tbxCategoriaMaestro.Text = articulo.Categoria.Descripcion;
