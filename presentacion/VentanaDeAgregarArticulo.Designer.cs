@@ -1,4 +1,6 @@
-﻿namespace presentacion
+﻿using System.Drawing;
+
+namespace presentacion
 {
     partial class frmVentanaDeAgregarArticulo
     {
@@ -214,6 +216,7 @@
             this.pbxImagenNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagenNuevo.TabIndex = 19;
             this.pbxImagenNuevo.TabStop = false;
+            this.pbxImagenNuevo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // btnVerImagen
             // 
@@ -257,7 +260,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenNuevo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.BackColor = Color.FromArgb(205, 255, 214);
         }
 
         #endregion

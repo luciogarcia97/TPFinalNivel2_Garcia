@@ -27,6 +27,8 @@ namespace presentacion
             this.articulo = item;
             Text = "Modificar Articulo";
             btnAceptar.Text = "Modificar";
+            BackColor = Color.FromArgb(252, 213, 213);
+            pbxImagenNuevo.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
         private void frmVentanaDeAgregarArticulo_Load(object sender, EventArgs e)
         {
