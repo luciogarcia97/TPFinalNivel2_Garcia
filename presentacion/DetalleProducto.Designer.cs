@@ -58,11 +58,13 @@ namespace presentacion
             // 
             // tbxNombreProductoCombinado
             // 
-            this.tbxNombreProductoCombinado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxNombreProductoCombinado.Location = new System.Drawing.Point(75, 25);
+            this.tbxNombreProductoCombinado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(224)))));
+            this.tbxNombreProductoCombinado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxNombreProductoCombinado.Font = new System.Drawing.Font("Monserrat", 10F);
+            this.tbxNombreProductoCombinado.Location = new System.Drawing.Point(129, 30);
             this.tbxNombreProductoCombinado.Name = "tbxNombreProductoCombinado";
             this.tbxNombreProductoCombinado.ReadOnly = true;
-            this.tbxNombreProductoCombinado.Size = new System.Drawing.Size(197, 20);
+            this.tbxNombreProductoCombinado.Size = new System.Drawing.Size(197, 13);
             this.tbxNombreProductoCombinado.TabIndex = 1;
             // 
             // pbxImagenMaestro
@@ -70,24 +72,24 @@ namespace presentacion
             this.pbxImagenMaestro.Location = new System.Drawing.Point(16, 70);
             this.pbxImagenMaestro.Name = "pbxImagenMaestro";
             this.pbxImagenMaestro.Size = new System.Drawing.Size(268, 322);
+            this.pbxImagenMaestro.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagenMaestro.TabIndex = 2;
             this.pbxImagenMaestro.TabStop = false;
-            this.pbxImagenMaestro.SizeMode = PictureBoxSizeMode.StretchImage;
             // 
             // lblIdProducto
             // 
             this.lblIdProducto.AutoSize = true;
-            this.lblIdProducto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Underline);
+            this.lblIdProducto.Font = new System.Drawing.Font("Monserrat", 12F, System.Drawing.FontStyle.Underline);
             this.lblIdProducto.Location = new System.Drawing.Point(51, 27);
             this.lblIdProducto.Name = "lblIdProducto";
-            this.lblIdProducto.Size = new System.Drawing.Size(20, 16);
+            this.lblIdProducto.Size = new System.Drawing.Size(68, 16);
             this.lblIdProducto.TabIndex = 3;
-            this.lblIdProducto.Text = "ID";
+            this.lblIdProducto.Text = "Producto:";
             // 
             // lblDescripcionMaestro
             // 
             this.lblDescripcionMaestro.AutoSize = true;
-            this.lblDescripcionMaestro.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Underline);
+            this.lblDescripcionMaestro.Font = new System.Drawing.Font("Monserrat", 12F, System.Drawing.FontStyle.Underline);
             this.lblDescripcionMaestro.Location = new System.Drawing.Point(313, 70);
             this.lblDescripcionMaestro.Name = "lblDescripcionMaestro";
             this.lblDescripcionMaestro.Size = new System.Drawing.Size(85, 16);
@@ -96,7 +98,9 @@ namespace presentacion
             // 
             // tbxDescripcionMaestro
             // 
-            this.tbxDescripcionMaestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxDescripcionMaestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(224)))));
+            this.tbxDescripcionMaestro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxDescripcionMaestro.Font = new System.Drawing.Font("Monserrat", 10F);
             this.tbxDescripcionMaestro.Location = new System.Drawing.Point(316, 89);
             this.tbxDescripcionMaestro.Multiline = true;
             this.tbxDescripcionMaestro.Name = "tbxDescripcionMaestro";
@@ -107,7 +111,7 @@ namespace presentacion
             // lblMarcaMaestro
             // 
             this.lblMarcaMaestro.AutoSize = true;
-            this.lblMarcaMaestro.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Underline);
+            this.lblMarcaMaestro.Font = new System.Drawing.Font("Monserrat", 12F, System.Drawing.FontStyle.Underline);
             this.lblMarcaMaestro.Location = new System.Drawing.Point(313, 178);
             this.lblMarcaMaestro.Name = "lblMarcaMaestro";
             this.lblMarcaMaestro.Size = new System.Drawing.Size(50, 16);
@@ -116,17 +120,19 @@ namespace presentacion
             // 
             // tbxMarcaMaestro
             // 
-            this.tbxMarcaMaestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxMarcaMaestro.Location = new System.Drawing.Point(369, 178);
+            this.tbxMarcaMaestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(224)))));
+            this.tbxMarcaMaestro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxMarcaMaestro.Font = new System.Drawing.Font("Monserrat", 10F);
+            this.tbxMarcaMaestro.Location = new System.Drawing.Point(369, 181);
             this.tbxMarcaMaestro.Name = "tbxMarcaMaestro";
             this.tbxMarcaMaestro.ReadOnly = true;
-            this.tbxMarcaMaestro.Size = new System.Drawing.Size(140, 20);
+            this.tbxMarcaMaestro.Size = new System.Drawing.Size(140, 13);
             this.tbxMarcaMaestro.TabIndex = 11;
             // 
             // lblCategoriaMaestro
             // 
             this.lblCategoriaMaestro.AutoSize = true;
-            this.lblCategoriaMaestro.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Underline);
+            this.lblCategoriaMaestro.Font = new System.Drawing.Font("Monserrat", 12F, System.Drawing.FontStyle.Underline);
             this.lblCategoriaMaestro.Location = new System.Drawing.Point(515, 178);
             this.lblCategoriaMaestro.Name = "lblCategoriaMaestro";
             this.lblCategoriaMaestro.Size = new System.Drawing.Size(73, 16);
@@ -135,28 +141,32 @@ namespace presentacion
             // 
             // tbxCategoriaMaestro
             // 
-            this.tbxCategoriaMaestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxCategoriaMaestro.Location = new System.Drawing.Point(594, 178);
+            this.tbxCategoriaMaestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(224)))));
+            this.tbxCategoriaMaestro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxCategoriaMaestro.Font = new System.Drawing.Font("Monserrat", 10F);
+            this.tbxCategoriaMaestro.Location = new System.Drawing.Point(594, 181);
             this.tbxCategoriaMaestro.Name = "tbxCategoriaMaestro";
             this.tbxCategoriaMaestro.ReadOnly = true;
-            this.tbxCategoriaMaestro.Size = new System.Drawing.Size(140, 20);
+            this.tbxCategoriaMaestro.Size = new System.Drawing.Size(140, 13);
             this.tbxCategoriaMaestro.TabIndex = 13;
             // 
             // tbxPrecioMaestro
             // 
-            this.tbxPrecioMaestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbxPrecioMaestro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tbxPrecioMaestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(224)))));
+            this.tbxPrecioMaestro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbxPrecioMaestro.Font = new System.Drawing.Font("Monserrat", 12F);
             this.tbxPrecioMaestro.ForeColor = System.Drawing.Color.Purple;
             this.tbxPrecioMaestro.Location = new System.Drawing.Point(315, 243);
             this.tbxPrecioMaestro.Name = "tbxPrecioMaestro";
             this.tbxPrecioMaestro.ReadOnly = true;
-            this.tbxPrecioMaestro.Size = new System.Drawing.Size(143, 26);
+            this.tbxPrecioMaestro.Size = new System.Drawing.Size(143, 19);
             this.tbxPrecioMaestro.TabIndex = 14;
             // 
             // frmDetalleProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(253)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(753, 416);
             this.Controls.Add(this.tbxPrecioMaestro);
             this.Controls.Add(this.tbxCategoriaMaestro);
@@ -178,7 +188,6 @@ namespace presentacion
             this.PerformLayout();
 
         }
-
         #endregion
 
         private System.Windows.Forms.Button btnRetroceder;
