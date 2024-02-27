@@ -129,8 +129,11 @@ namespace Negocio
                         if (!string.IsNullOrEmpty(marca))
                         {
                             query += " where m.Descripcion like '%' + @filterMarca + '%'";
-                        }
-                        if (!string.IsNullOrEmpty(categoria))
+                            if (!string.IsNullOrEmpty(categoria))
+                            {
+                                query += " and c.Descripcion like '%' + @filterCategoria + '%'";
+                            }
+                        }else if (!string.IsNullOrEmpty(categoria))
                         {
                             query += " where c.Descripcion like '%' + @filterCategoria + '%'";
                         }
@@ -141,8 +144,11 @@ namespace Negocio
                         if (!string.IsNullOrEmpty(marca))
                         {
                             query += " and m.Descripcion like '%' + @filterMarca + '%'";
-                        }
-                        if (!string.IsNullOrEmpty(categoria))
+                            if (!string.IsNullOrEmpty(categoria))
+                            {
+                                query += " and c.Descripcion like '%' + @filterCategoria + '%'";
+                            }
+                        }else if (!string.IsNullOrEmpty(categoria))
                         {
                             query += " and c.Descripcion like '%' + @filterCategoria + '%'";
                         }
@@ -156,8 +162,11 @@ namespace Negocio
                         if (!string.IsNullOrEmpty(marca))
                         {
                             query += " and m.Descripcion like '%' + @filterMarca + '%'";
-                        }
-                        if (!string.IsNullOrEmpty(categoria))
+                            if (!string.IsNullOrEmpty(categoria))
+                            {
+                                query += " and c.Descripcion like '%' + @filterCategoria + '%'";
+                            }
+                        }else if (!string.IsNullOrEmpty(categoria))
                         {
                             query += " and c.Descripcion like '%' + @filterCategoria + '%'";
                         }
@@ -168,8 +177,11 @@ namespace Negocio
                         if (!string.IsNullOrEmpty(marca))
                         {
                             query += " and m.Descripcion like '%' + @filterMarca + '%'";
-                        }
-                        if (!string.IsNullOrEmpty(categoria))
+                            if (!string.IsNullOrEmpty(categoria))
+                            {
+                                query += " and c.Descripcion like '%' + @filterCategoria + '%'";
+                            }
+                        }else if (!string.IsNullOrEmpty(categoria))
                         {
                             query += " and c.Descripcion like '%' + @filterCategoria + '%'";
                         }

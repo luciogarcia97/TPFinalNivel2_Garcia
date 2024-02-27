@@ -119,18 +119,22 @@ namespace presentacion
             
             listaMarcas = marcaService.listar();
             string nuevaMarca = cbxAgregarMarca.Text;
-
+            if(!validacionesAgregar(nuevaMarca))
+            {
+                return;
+            }
+            if(!validacionMarcaNueva(nuevaMarca,listaMarcas))
+            {
+                return;
+            }
             try
             {
-                if(!validacionMarcaNueva(nuevaMarca,listaMarcas))
-                {
-                    Marca marca = new Marca();
-                    marca.Descripcion = nuevaMarca;
+                Marca marca = new Marca();
+                marca.Descripcion = nuevaMarca;
 
-                    marcaService.agregar(marca);
-                    MessageBox.Show("Agregado exitosamente");
-                    cargaAgregar();
-                }
+                marcaService.agregar(marca);
+                MessageBox.Show("Agregado exitosamente");
+                cargaAgregar();
 
             }
             catch (System.Exception ex)
@@ -147,18 +151,22 @@ namespace presentacion
             
             listaCategoria = categoriaService.listar();
             string nuevaCategoria = cbxAgregarCate.Text;
-
+            if(!validacionesAgregar(nuevaCategoria))
+            {
+                return;
+            }
+            if(!validacionCategoriaNueva(nuevaCategoria,listaCategoria))
+            {
+                return;
+            }
             try
             {
-                if(!validacionCategoriaNueva(nuevaCategoria,listaCategoria))
-                {
-                    Categoria categoria = new Categoria();
-                    categoria.Descripcion = nuevaCategoria;
+                Categoria categoria = new Categoria();
+                categoria.Descripcion = nuevaCategoria;
 
-                    categoriaService.agregar(categoria);
-                    MessageBox.Show("Agregado exitosamente");
-                    cargaAgregar();
-                }
+                categoriaService.agregar(categoria);
+                MessageBox.Show("Agregado exitosamente");
+                cargaAgregar();
 
             }
             catch (System.Exception ex)
@@ -190,47 +198,37 @@ namespace presentacion
         }
         private bool validacionMarcaNueva(string item, List<Marca> lista)
         {
-            if (!string.IsNullOrEmpty(item))
+            var itemEncontrado = lista.Find(x => x.Descripcion.Equals(item.ToUpper(), StringComparison.OrdinalIgnoreCase));
+            
+            if (itemEncontrado != null)
             {
-                var itemEncontrado = lista.Find(x => x.Descripcion.Equals(item.ToUpper(), StringComparison.OrdinalIgnoreCase));
-                
-                if (itemEncontrado != null)
-                {
-                    Console.WriteLine($"El item ingresado ya se encuentra: {itemEncontrado.Descripcion}");
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                MessageBox.Show($"El item ingresado ya se encuentra: {itemEncontrado.Descripcion}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
-            else
-            {
-                Console.WriteLine($"El item ingresado es erroneo");
-                return true;
-            }
+            return true;
         }
         private bool validacionCategoriaNueva(string item, List<Categoria> lista)
         {
-            if (!string.IsNullOrEmpty(item))
+            var itemEncontrado = lista.Find(x => x.Descripcion.Equals(item.ToUpper(), StringComparison.OrdinalIgnoreCase));
+            
+            if (itemEncontrado != null)
             {
-                var itemEncontrado = lista.Find(x => x.Descripcion.Equals(item.ToUpper(), StringComparison.OrdinalIgnoreCase));
-                
-                if (itemEncontrado != null)
-                {
-                    Console.WriteLine($"El item ingresado ya se encuentra: {itemEncontrado.Descripcion}");
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                MessageBox.Show($"El item ingresado ya se encuentra: {itemEncontrado.Descripcion}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
-            else
-            {
-                Console.WriteLine($"El item ingresado es erroneo");
-                return true;
-            }
+            return true;
         }
+        private bool validacionesAgregar(string item)
+        {
+            bool aux = true;
+            if (string.IsNullOrEmpty(item))
+            {
+                MessageBox.Show("El campo se encuentra vacio, no se agrego un nuevo item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                aux = false;
+                return aux;
+            }
+            return aux;
+        }
+        
     }
 }

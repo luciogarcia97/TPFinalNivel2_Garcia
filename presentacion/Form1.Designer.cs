@@ -52,10 +52,11 @@ namespace presentacion
             this.lblPrecioMaximo = new System.Windows.Forms.Label();
             this.lblPrecioBase = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
-            this.lblOpcionales = new System.Windows.Forms.Label();
             this.lblTituloBusqueda = new System.Windows.Forms.Label();
             this.btnEliminarFiltroCategoria = new System.Windows.Forms.Button();
             this.btnEliminarFiltroMarca = new System.Windows.Forms.Button();
+            this.btnEliminarPrecioBase = new System.Windows.Forms.Button();
+            this.btnEliminarPrecioMaximo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenCatalogo)).BeginInit();
             this.mnsBarradeAcciones.SuspendLayout();
@@ -238,15 +239,6 @@ namespace presentacion
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // lblOpcionales
-            // 
-            this.lblOpcionales.AutoSize = true;
-            this.lblOpcionales.Location = new System.Drawing.Point(405, 441);
-            this.lblOpcionales.Name = "lblOpcionales";
-            this.lblOpcionales.Size = new System.Drawing.Size(63, 13);
-            this.lblOpcionales.TabIndex = 20;
-            this.lblOpcionales.Text = "Opcionales:";
-            // 
             // lblTituloBusqueda
             // 
             this.lblTituloBusqueda.AutoSize = true;
@@ -279,16 +271,39 @@ namespace presentacion
             this.btnEliminarFiltroMarca.UseVisualStyleBackColor = true;
             this.btnEliminarFiltroMarca.Click += new System.EventHandler(this.btnEliminarFiltroMarca_Click);
             // 
+            // btnEliminarPrecioBase
+            // 
+            this.btnEliminarPrecioBase.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarPrecioBase.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarPrecioBase.Image")));
+            this.btnEliminarPrecioBase.Location = new System.Drawing.Point(243, 463);
+            this.btnEliminarPrecioBase.Name = "btnEliminarPrecioBase";
+            this.btnEliminarPrecioBase.Size = new System.Drawing.Size(20, 21);
+            this.btnEliminarPrecioBase.TabIndex = 24;
+            this.btnEliminarPrecioBase.UseVisualStyleBackColor = true;
+            this.btnEliminarPrecioBase.Click += new System.EventHandler(this.btnEliminarPrecioBase_Click);
+            // 
+            // btnEliminarPrecioMaximo
+            // 
+            this.btnEliminarPrecioMaximo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarPrecioMaximo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarPrecioMaximo.Image")));
+            this.btnEliminarPrecioMaximo.Location = new System.Drawing.Point(243, 494);
+            this.btnEliminarPrecioMaximo.Name = "btnEliminarPrecioMaximo";
+            this.btnEliminarPrecioMaximo.Size = new System.Drawing.Size(20, 21);
+            this.btnEliminarPrecioMaximo.TabIndex = 25;
+            this.btnEliminarPrecioMaximo.UseVisualStyleBackColor = true;
+            this.btnEliminarPrecioMaximo.Click += new System.EventHandler(this.btnEliminarPrecioMaximo_Click);
+            // 
             // frmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1038, 520);
+            this.Controls.Add(this.btnEliminarPrecioMaximo);
+            this.Controls.Add(this.btnEliminarPrecioBase);
             this.Controls.Add(this.btnEliminarFiltroCategoria);
             this.Controls.Add(this.btnEliminarFiltroMarca);
             this.Controls.Add(this.lblTituloBusqueda);
-            this.Controls.Add(this.lblOpcionales);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.cbxCategoria);
             this.Controls.Add(this.btnAplicarFiltro);
@@ -340,10 +355,11 @@ namespace presentacion
         private System.Windows.Forms.Label lblPrecioMaximo;
         private System.Windows.Forms.Label lblPrecioBase;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Label lblOpcionales;
         private System.Windows.Forms.Label lblTituloBusqueda;
         private System.Windows.Forms.Button btnEliminarFiltroCategoria;
         private Button btnEliminarFiltroMarca;
+        private Button btnEliminarPrecioBase;
+        private Button btnEliminarPrecioMaximo;
     }
 }
 

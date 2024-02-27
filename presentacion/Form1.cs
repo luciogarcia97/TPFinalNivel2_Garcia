@@ -39,10 +39,15 @@ namespace presentacion
         private void cargar()
         {
             ArticuloService service = new ArticuloService();
-            modificacionComboBox(cbxCategoria);
-            modificacionComboBox(cbxMarca);
             CategoriaService categoriaService = new CategoriaService();
             MarcaService marcaService = new MarcaService();
+            modificacionComboBox(cbxCategoria);
+            modificacionComboBox(cbxMarca);
+            ocultarComboBoxes(cbxPrecioBase);
+            ocultarComboBoxes(cbxPrecioMaximo);
+            modificacionComboBox(cbxPrecioBase);
+            modificacionComboBox(cbxPrecioMaximo);
+            configurarMensajeBuscador();
 
             try
             {
@@ -71,7 +76,6 @@ namespace presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
-
             preciosMinimos(cbxPrecioBase);
             preciosMaximos(cbxPrecioMaximo);
         }
@@ -176,8 +180,7 @@ namespace presentacion
             dgvArticulos.DataSource = listaArticulos;
             ocultarColumnas();
             tbxBuscador.Clear();
-            ocultarComboBoxes(cbxMarca);
-            ocultarComboBoxes(cbxCategoria);
+            cargar();
         }
 
         //Busqueda por filtros
@@ -213,7 +216,7 @@ namespace presentacion
             ArticuloService service = new ArticuloService();
             try
             {
-                int precioBase = 0, precioMaximo = 0; //Declaro las variables, si esto funciona se pisa el valor, si falla, salta el mensaje de error.
+                int precioBase = -1, precioMaximo = -1; //Declaro las variables, si esto funciona se pisa el valor, si falla, salta el mensaje de error.
                 if (cbxPrecioBase.SelectedItem != null)
                 {
                     if (int.TryParse(cbxPrecioBase.SelectedItem.ToString(), out int selectedValue))
@@ -225,13 +228,8 @@ namespace presentacion
                         MessageBox.Show("Algo fallo, intente nuevamente");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No selecciono un precio base, por favor revise los filtros");
-                }
                 if (cbxPrecioMaximo.SelectedItem != null)
                 {
-                    precioMaximo = 0;
                     if (int.TryParse(cbxPrecioMaximo.SelectedItem.ToString(), out int selectedValue))
                     {
                         precioMaximo = selectedValue;
@@ -240,10 +238,6 @@ namespace presentacion
                     {
                         MessageBox.Show("Algo fallo, intente nuevamente");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("No selecciono un precio maximo, por favor revise los filtros");
                 }
                 string marca = "";
                 string categoria = "";
@@ -330,6 +324,16 @@ namespace presentacion
                 }
             }
         }
+
+        private void btnEliminarPrecioBase_Click(object sender, EventArgs e)
+        {
+            ocultarComboBoxes(cbxPrecioBase);
+        }
+
+        private void btnEliminarPrecioMaximo_Click(object sender, EventArgs e)
+        {
+            ocultarComboBoxes(cbxPrecioMaximo);
+        }
     }
 }
         /*
@@ -337,11 +341,7 @@ TO DO
 Todo lo que respecte a bugs de la app y por ultimo la belleza
 
 validacion de cantidad de caracteres en todos los campos.
-borrar precio en el filtrado inferior.
-si se intenta agregar una marca o cate vacia no hace nada, que tire mensaje de error.
-
 Posible mejora
   Al no devolver nada, que muestre vacio o cartel de nada para mostrar
   Mensaje de vuelta en el buscador
-  icono de tacho de basura a cambiar
 */
