@@ -71,6 +71,10 @@ namespace presentacion
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_DoubleClick);
+            this.dgvArticulos.BorderStyle = BorderStyle.None;
+            this.dgvArticulos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            this.dgvArticulos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            this.dgvArticulos.GridColor = Color.FromArgb(214, 214, 214);
             // 
             // pbxImagenCatalogo
             // 
@@ -90,6 +94,7 @@ namespace presentacion
             this.mnsBarradeAcciones.Size = new System.Drawing.Size(1038, 24);
             this.mnsBarradeAcciones.TabIndex = 2;
             this.mnsBarradeAcciones.Text = "menuStrip1";
+            this.mnsBarradeAcciones.BackColor = Color.FromArgb(219,247,245);
             // 
             // tsmArticulosWork
             // 
@@ -330,7 +335,7 @@ namespace presentacion
             this.mnsBarradeAcciones.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.BackColor = Color.FromArgb(219,247,245);
         }
 
         #endregion
