@@ -339,9 +339,4 @@ namespace presentacion
         /*
 TO DO
 Todo lo que respecte a bugs de la app y por ultimo la belleza
-
-validacion de cantidad de caracteres en todos los campos.
-Posible mejora
-  Al no devolver nada, que muestre vacio o cartel de nada para mostrar
-  Mensaje de vuelta en el buscador
 */

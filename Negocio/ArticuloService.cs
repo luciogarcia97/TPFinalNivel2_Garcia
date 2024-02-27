@@ -38,8 +38,7 @@ namespace Negocio
                     unit.Marca.Id = (int)datos.Lector["idMarcas"];
                     unit.Marca.Descripcion = (string)datos.Lector["Marca"];
                     unit.UrlImagen = (string)datos.Lector["UrlImagen"];
-                    unit.Precio = (decimal)datos.Lector["Precio"];
-                    unit.Precio = formateoDecimales(unit.Precio);
+                    unit.Precio = formateoDecimales((decimal)datos.Lector["Precio"]);
 
                     lista.Add(unit);
                 }
@@ -205,7 +204,8 @@ namespace Negocio
                     aux.Nombre = (string)data.Lector["Nombre"];
                     aux.Descripcion = (string)data.Lector["Descripcion"];
                     if(!(data.Lector["ImagenUrl"] is DBNull)) aux.UrlImagen = (string)data.Lector["ImagenUrl"];
-                    aux.Precio = (decimal)data.Lector["Precio"];
+                    aux.Precio = formateoDecimales((decimal)data.Lector["Precio"]);
+                    
 
                     aux.Marca = new Marca();
                     aux.Marca.Id = (int)data.Lector["IdMarca"];
@@ -249,10 +249,16 @@ namespace Negocio
         }
         private decimal formateoDecimales(decimal item)
         {
-            string aux = Math.Round(item).ToString("N2");
-            decimal number = decimal.Parse(aux);
+            decimal numeroTruncado = Math.Truncate(item * 100) / 100;
+            decimal terceraCifraDecimal = (item * 1000) % 10; // Obtener la tercera cifra decimal
 
-            return number;
+            if (terceraCifraDecimal >= 5)
+            {
+                // Si la tercera cifra decimal es mayor a 5, sumamos 0.01 a la segunda cifra decimal
+                numeroTruncado += 0.01m;
+            }
+
+            return numeroTruncado;
         }
     }
 }

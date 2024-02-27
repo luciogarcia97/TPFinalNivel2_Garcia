@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace presentacion
 {
@@ -39,6 +40,8 @@ namespace presentacion
             {
                 if(articulo == null) { articulo = new Articulo(); }
                 
+                if(!validarMaximoCincuentaCaracteres(tbxCodigo) || !validarMaximoCincuentaCaracteres(tbxNombre) || !validarMaximoCientoCincuentaCaracteres(tbxDescripcion) || !validarMaximoMilCaracteres(tbxImagenUrl) || !validarSoloNumeros(tbxPrecio)) return;
+                if(!validarSeleccionComboBox(cbxAgregarMarca) || !validarSeleccionComboBox(cbxAgregarCate)) return;
                 articulo.Codigo = tbxCodigo.Text;
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
@@ -49,13 +52,13 @@ namespace presentacion
 
                 if(articulo.Id != 0)
                 {
-                articuloService.modificarArticulo(articulo);
-                MessageBox.Show("Modificado exitosamente");
+                    articuloService.modificarArticulo(articulo);
+                    MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
-                articuloService.agregarArticulo(articulo);
-                MessageBox.Show("Agregado exitosamente");
+                    articuloService.agregarArticulo(articulo);
+                    MessageBox.Show("Agregado exitosamente");
                 }
 
                 Close();
@@ -119,14 +122,7 @@ namespace presentacion
             
             listaMarcas = marcaService.listar();
             string nuevaMarca = cbxAgregarMarca.Text;
-            if(!validacionesAgregar(nuevaMarca))
-            {
-                return;
-            }
-            if(!validacionMarcaNueva(nuevaMarca,listaMarcas))
-            {
-                return;
-            }
+            if(!validacionesAgregar(nuevaMarca) || !validacionMarcaNueva(nuevaMarca,listaMarcas)) return;
             try
             {
                 Marca marca = new Marca();
@@ -151,14 +147,7 @@ namespace presentacion
             
             listaCategoria = categoriaService.listar();
             string nuevaCategoria = cbxAgregarCate.Text;
-            if(!validacionesAgregar(nuevaCategoria))
-            {
-                return;
-            }
-            if(!validacionCategoriaNueva(nuevaCategoria,listaCategoria))
-            {
-                return;
-            }
+            if(!validacionesAgregar(nuevaCategoria) || !validacionCategoriaNueva(nuevaCategoria,listaCategoria)) return;
             try
             {
                 Categoria categoria = new Categoria();
@@ -229,6 +218,50 @@ namespace presentacion
             }
             return aux;
         }
-        
+        private bool validarMaximoCincuentaCaracteres(TextBox item)
+        {
+            if(item.Text.Length > 50)
+            {
+                MessageBox.Show("Uno de los campos tiene un limite de 50 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private bool validarMaximoCientoCincuentaCaracteres(TextBox item)
+        {
+            if(item.Text.Length > 150)
+            {
+                MessageBox.Show("Uno de los campos tiene un limite de 150 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private bool validarMaximoMilCaracteres(TextBox item)
+        {
+            if(item.Text.Length > 1000)
+            {
+                MessageBox.Show("El campo Imagen tiene un limite de 1000 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private bool validarSoloNumeros(TextBox item)
+        {
+            if(!decimal.TryParse(item.Text, out decimal resultado))
+            {
+                MessageBox.Show("El campo Precio solo admite numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private bool validarSeleccionComboBox(ComboBox item)
+        {
+            if(item.SelectedIndex == -1)
+            {
+                MessageBox.Show("No complestaste uno de los desplegables", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
     }
 }

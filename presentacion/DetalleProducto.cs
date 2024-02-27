@@ -27,16 +27,12 @@ namespace presentacion
 
         private void frmDetalleProducto_Load(object sender, EventArgs e)
         {
-            ArticuloService articuloService = new ArticuloService();
-            CategoriaService categoriaService = new CategoriaService();
-            MarcaService marcaService = new MarcaService();
-
             try
             {
                 tbxDescripcionMaestro.Text = articulo.Descripcion;
                 tbxMarcaMaestro.Text = articulo.Marca.Descripcion;
                 tbxCategoriaMaestro.Text = articulo.Categoria.Descripcion;
-                tbxPrecioMaestro.Text = "$" + Math.Round(articulo.Precio).ToString("N2");
+                tbxPrecioMaestro.Text = "$" + articulo.Precio.ToString();
                 cargarImagen(articulo.UrlImagen);
                 tbxNombreProductoCombinado.Text = articulo.Codigo + " - " + articulo.Nombre;
                 
