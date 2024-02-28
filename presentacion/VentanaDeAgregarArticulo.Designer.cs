@@ -1,4 +1,6 @@
-﻿namespace presentacion
+﻿using System.Drawing;
+
+namespace presentacion
 {
     partial class frmVentanaDeAgregarArticulo
     {
@@ -211,8 +213,10 @@
             this.pbxImagenNuevo.Location = new System.Drawing.Point(359, 19);
             this.pbxImagenNuevo.Name = "pbxImagenNuevo";
             this.pbxImagenNuevo.Size = new System.Drawing.Size(179, 213);
+            this.pbxImagenNuevo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagenNuevo.TabIndex = 19;
             this.pbxImagenNuevo.TabStop = false;
+            this.pbxImagenNuevo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // btnVerImagen
             // 
@@ -250,12 +254,13 @@
             this.Controls.Add(this.tbxCodigo);
             this.Controls.Add(this.lblCodigo);
             this.Name = "frmVentanaDeAgregarArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.frmVentanaDeAgregarArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenNuevo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.BackColor = Color.FromArgb(205, 255, 214);
         }
 
         #endregion

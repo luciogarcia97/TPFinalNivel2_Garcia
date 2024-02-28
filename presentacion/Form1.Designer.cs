@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace presentacion
 {
@@ -39,7 +40,6 @@ namespace presentacion
             this.tsmModificarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarArticulo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmEliminarFisico = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEliminarLogico = new System.Windows.Forms.ToolStripMenuItem();
             this.btnBuscarGeneral = new System.Windows.Forms.Button();
             this.tbxBuscador = new System.Windows.Forms.TextBox();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
@@ -52,10 +52,11 @@ namespace presentacion
             this.lblPrecioMaximo = new System.Windows.Forms.Label();
             this.lblPrecioBase = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
-            this.lblOpcionales = new System.Windows.Forms.Label();
             this.lblTituloBusqueda = new System.Windows.Forms.Label();
-            this.btnEliminarFiltroMarca = new System.Windows.Forms.Button();
             this.btnEliminarFiltroCategoria = new System.Windows.Forms.Button();
+            this.btnEliminarFiltroMarca = new System.Windows.Forms.Button();
+            this.btnEliminarPrecioBase = new System.Windows.Forms.Button();
+            this.btnEliminarPrecioMaximo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenCatalogo)).BeginInit();
             this.mnsBarradeAcciones.SuspendLayout();
@@ -69,6 +70,11 @@ namespace presentacion
             this.dgvArticulos.Size = new System.Drawing.Size(643, 331);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            this.dgvArticulos.DoubleClick += new System.EventHandler(this.dgvArticulos_DoubleClick);
+            this.dgvArticulos.BorderStyle = BorderStyle.None;
+            this.dgvArticulos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            this.dgvArticulos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            this.dgvArticulos.GridColor = Color.FromArgb(214, 214, 214);
             // 
             // pbxImagenCatalogo
             // 
@@ -88,6 +94,7 @@ namespace presentacion
             this.mnsBarradeAcciones.Size = new System.Drawing.Size(1038, 24);
             this.mnsBarradeAcciones.TabIndex = 2;
             this.mnsBarradeAcciones.Text = "menuStrip1";
+            this.mnsBarradeAcciones.BackColor = Color.FromArgb(219,247,245);
             // 
             // tsmArticulosWork
             // 
@@ -109,15 +116,14 @@ namespace presentacion
             // tsmModificarArticulo
             // 
             this.tsmModificarArticulo.Name = "tsmModificarArticulo";
-            this.tsmModificarArticulo.Size = new System.Drawing.Size(180, 22);
+            this.tsmModificarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmModificarArticulo.Text = "Modificar";
             this.tsmModificarArticulo.Click += new System.EventHandler(this.tsmModificarArticulo_Click);
             // 
             // tsmEliminarArticulo
             // 
             this.tsmEliminarArticulo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmEliminarFisico,
-            this.tsmEliminarLogico});
+            this.tsmEliminarFisico});
             this.tsmEliminarArticulo.Name = "tsmEliminarArticulo";
             this.tsmEliminarArticulo.Size = new System.Drawing.Size(125, 22);
             this.tsmEliminarArticulo.Text = "Eliminar";
@@ -125,14 +131,9 @@ namespace presentacion
             // tsmEliminarFisico
             // 
             this.tsmEliminarFisico.Name = "tsmEliminarFisico";
-            this.tsmEliminarFisico.Size = new System.Drawing.Size(110, 22);
-            this.tsmEliminarFisico.Text = "Fisico";
-            // 
-            // tsmEliminarLogico
-            // 
-            this.tsmEliminarLogico.Name = "tsmEliminarLogico";
-            this.tsmEliminarLogico.Size = new System.Drawing.Size(110, 22);
-            this.tsmEliminarLogico.Text = "Logico";
+            this.tsmEliminarFisico.Size = new System.Drawing.Size(189, 22);
+            this.tsmEliminarFisico.Text = "Articulo Seleccionado";
+            this.tsmEliminarFisico.Click += new System.EventHandler(this.tsmEliminarFisico_Click);
             // 
             // btnBuscarGeneral
             // 
@@ -243,15 +244,6 @@ namespace presentacion
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // lblOpcionales
-            // 
-            this.lblOpcionales.AutoSize = true;
-            this.lblOpcionales.Location = new System.Drawing.Point(405, 441);
-            this.lblOpcionales.Name = "lblOpcionales";
-            this.lblOpcionales.Size = new System.Drawing.Size(63, 13);
-            this.lblOpcionales.TabIndex = 20;
-            this.lblOpcionales.Text = "Opcionales:";
-            // 
             // lblTituloBusqueda
             // 
             this.lblTituloBusqueda.AutoSize = true;
@@ -261,16 +253,6 @@ namespace presentacion
             this.lblTituloBusqueda.Size = new System.Drawing.Size(277, 22);
             this.lblTituloBusqueda.TabIndex = 21;
             this.lblTituloBusqueda.Text = "Busqueda por rango de precios";
-            // 
-            // btnEliminarFiltroMarca
-            // 
-            this.btnEliminarFiltroMarca.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarFiltroMarca.Image")));
-            this.btnEliminarFiltroMarca.Location = new System.Drawing.Point(526, 463);
-            this.btnEliminarFiltroMarca.Name = "btnEliminarFiltroMarca";
-            this.btnEliminarFiltroMarca.Size = new System.Drawing.Size(20, 21);
-            this.btnEliminarFiltroMarca.TabIndex = 22;
-            this.btnEliminarFiltroMarca.UseVisualStyleBackColor = true;
-            this.btnEliminarFiltroMarca.Click += new System.EventHandler(this.btnEliminarFiltroMarca_Click);
             // 
             // btnEliminarFiltroCategoria
             // 
@@ -283,16 +265,50 @@ namespace presentacion
             this.btnEliminarFiltroCategoria.UseVisualStyleBackColor = true;
             this.btnEliminarFiltroCategoria.Click += new System.EventHandler(this.btnEliminarFiltroCategoria_Click);
             // 
+            // btnEliminarFiltroMarca
+            // 
+            this.btnEliminarFiltroMarca.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarFiltroMarca.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarFiltroMarca.Image")));
+            this.btnEliminarFiltroMarca.Location = new System.Drawing.Point(526, 463);
+            this.btnEliminarFiltroMarca.Name = "btnEliminarFiltroMarca";
+            this.btnEliminarFiltroMarca.Size = new System.Drawing.Size(20, 21);
+            this.btnEliminarFiltroMarca.TabIndex = 22;
+            this.btnEliminarFiltroMarca.UseVisualStyleBackColor = true;
+            this.btnEliminarFiltroMarca.Click += new System.EventHandler(this.btnEliminarFiltroMarca_Click);
+            // 
+            // btnEliminarPrecioBase
+            // 
+            this.btnEliminarPrecioBase.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarPrecioBase.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarPrecioBase.Image")));
+            this.btnEliminarPrecioBase.Location = new System.Drawing.Point(243, 463);
+            this.btnEliminarPrecioBase.Name = "btnEliminarPrecioBase";
+            this.btnEliminarPrecioBase.Size = new System.Drawing.Size(20, 21);
+            this.btnEliminarPrecioBase.TabIndex = 24;
+            this.btnEliminarPrecioBase.UseVisualStyleBackColor = true;
+            this.btnEliminarPrecioBase.Click += new System.EventHandler(this.btnEliminarPrecioBase_Click);
+            // 
+            // btnEliminarPrecioMaximo
+            // 
+            this.btnEliminarPrecioMaximo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEliminarPrecioMaximo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarPrecioMaximo.Image")));
+            this.btnEliminarPrecioMaximo.Location = new System.Drawing.Point(243, 494);
+            this.btnEliminarPrecioMaximo.Name = "btnEliminarPrecioMaximo";
+            this.btnEliminarPrecioMaximo.Size = new System.Drawing.Size(20, 21);
+            this.btnEliminarPrecioMaximo.TabIndex = 25;
+            this.btnEliminarPrecioMaximo.UseVisualStyleBackColor = true;
+            this.btnEliminarPrecioMaximo.Click += new System.EventHandler(this.btnEliminarPrecioMaximo_Click);
+            // 
             // frmCatalogo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1038, 520);
+            this.Controls.Add(this.btnEliminarPrecioMaximo);
+            this.Controls.Add(this.btnEliminarPrecioBase);
             this.Controls.Add(this.btnEliminarFiltroCategoria);
             this.Controls.Add(this.btnEliminarFiltroMarca);
             this.Controls.Add(this.lblTituloBusqueda);
-            this.Controls.Add(this.lblOpcionales);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.cbxCategoria);
             this.Controls.Add(this.btnAplicarFiltro);
@@ -319,7 +335,7 @@ namespace presentacion
             this.mnsBarradeAcciones.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.BackColor = Color.FromArgb(219,247,245);
         }
 
         #endregion
@@ -332,7 +348,6 @@ namespace presentacion
         private System.Windows.Forms.ToolStripMenuItem tsmModificarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarArticulo;
         private System.Windows.Forms.ToolStripMenuItem tsmEliminarFisico;
-        private System.Windows.Forms.ToolStripMenuItem tsmEliminarLogico;
         private System.Windows.Forms.Button btnBuscarGeneral;
         private System.Windows.Forms.TextBox tbxBuscador;
         private System.Windows.Forms.ComboBox cbxCategoria;
@@ -345,10 +360,11 @@ namespace presentacion
         private System.Windows.Forms.Label lblPrecioMaximo;
         private System.Windows.Forms.Label lblPrecioBase;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Label lblOpcionales;
         private System.Windows.Forms.Label lblTituloBusqueda;
-        private System.Windows.Forms.Button btnEliminarFiltroMarca;
         private System.Windows.Forms.Button btnEliminarFiltroCategoria;
+        private Button btnEliminarFiltroMarca;
+        private Button btnEliminarPrecioBase;
+        private Button btnEliminarPrecioMaximo;
     }
 }
 
