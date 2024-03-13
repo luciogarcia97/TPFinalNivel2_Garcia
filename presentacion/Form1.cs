@@ -188,6 +188,7 @@ namespace presentacion
         //Con esta funcion dejamos los cbx vacios cuando cargue
         private void modificacionComboBox(System.Windows.Forms.ComboBox item)
         {
+            item.DropDownStyle = ComboBoxStyle.DropDownList;
             item.DataSource = null;
             item.Items.Clear();
             item.SelectedIndex = -1; // Establece el índice de selección a -1 (ninguna selección)
@@ -336,7 +337,3 @@ namespace presentacion
         }
     }
 }
-/*
-TO DO
-Todo lo que respecte a bugs de la app y por ultimo la belleza
-*/
